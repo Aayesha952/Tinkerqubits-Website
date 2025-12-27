@@ -230,7 +230,7 @@
       }
 
       .text-content {
-        color: #333;
+        color: #2c3e50;
       }
 
       .text-content h1 {
@@ -249,7 +249,7 @@
         font-size: 1.15rem;
         line-height: 1.8;
         margin-bottom: 2rem;
-        color: #4a5568;
+        color: #2c3e50;
       }
 
       .cta-button {
@@ -356,7 +356,7 @@
 
       .tech-card h3 {
         font-size: 1.1rem;
-        color: #333;
+        color: #2c3e50;
         margin-top: 0.5rem;
       }
 
@@ -431,7 +431,7 @@
       }
 
       .content h1 {
-        color: #333;
+        color: #2c3e50;
         margin-bottom: 20px;
       }
       .problem-section {
@@ -473,6 +473,7 @@
         box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
         font-size: 16px;
         line-height: 1.6;
+        color: #2c3e50;
       }
       .see-solution{
         display: flex;
@@ -565,7 +566,7 @@
       }
 
       .header h1 {
-        font-size: 40px;
+        font-size: 3.5rem;
         font-weight: bold;
         color: #2c3e50;
         padding: 15px 30px;
@@ -1233,18 +1234,19 @@
         }
       }
       .partners-section {
+       
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
       }
 
       .section-title {
-        margin-top: 20px;
+        margin-top: 60px;
         text-align: center;
-        color: black;
-        font-size: 2.5rem;
+        color: #2c3e50;
+        font-size: 3.5rem;
         font-weight: bold;
-        margin-bottom: 60px;
+        margin-bottom: 20px;
       }
 
       .partners-grid {
@@ -1323,7 +1325,7 @@
 
       .incubation-title {
         font-size: 1.1rem;
-        color: #333;
+        color: #2c3e50;
         font-weight: 500;
         margin-bottom: 8px;
       }
@@ -1396,10 +1398,6 @@
           max-height: 70px;
         }
       }
-      .vm-header {
-        color: black;
-        font-size: 3rem;
-      }
       .vm-container {
         margin-top: 50px;
         display: flex;
@@ -1425,7 +1423,7 @@
 
       .vision-box {
         /* background: #c7daf5; */
-        color: #333;
+        color: #2c3e50;
         padding: 50px 60px;
         min-height: 250px;
         display: flex;
@@ -1476,7 +1474,7 @@
 
       .mission-box {
         background: #c7daf5;
-        color: #333;
+        color: #2c3e50;
         padding: 50px 80px;
         min-height: 250px;
         display: flex;
@@ -1514,17 +1512,25 @@
       }
 
       /* Typography */
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #2c3e50;
+      }
+
       h2 {
         font-size: 40px;
         margin-bottom: 20px;
         font-weight: bold;
-        color: #333;
+        color: #2c3e50;
       }
 
       p {
         font-size: 16px;
         line-height: 1.7;
         opacity: 0.95;
+        color: #2c3e50;
       }
 
       /* Responsive Design */
@@ -1612,6 +1618,7 @@
       footer {
         background-color: #312e81;
         color: #ffffff;
+
         padding: 40px 60px;
         margin-top: 60px;
       }
@@ -1808,6 +1815,62 @@
           padding: 15px 12px;
           font-size: 14px;
         }
+      }
+
+      /* Arrow button styles */
+      .arrow-button {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-top: 15px;
+        position: relative;
+      }
+
+      .arrow-icon {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      /* Popup styles */
+      .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .popup-content {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #333;
       }
     </style>
   </head>
@@ -2010,18 +2073,11 @@
         <div class="text-content">
           <h1>Technology Education <span>For Kids</span></h1>
           <p>
-            At Tinker Qubits, we're igniting curiosity and building tomorrow's
-            innovators. From coding and robotics to electronics and digital
-            creativity, we offer hands-on programs that transform children into
-            confident tech creators. Our courses make complex technology
-            accessible and exciting for young minds, preparing them for a
-            digital future.
+           At TinkerQubits Foundation, we believe access to digital education is a right, not a privilege. We design inclusive computer science and STEM programs that nurture curiosity, build digital confidence, and create innovation-driven communities—enabling lifelong learning and equitable futures for all children.
+
           </p>
           <p>
-            Join thousands of students who have discovered the joy of building,
-            programming, and innovating. Whether your child is just starting
-            their tech journey or ready for advanced challenges, we have the
-            perfect program to fuel their passion and develop real-world skills.
+            An accredited STEM.org program and incubatee at IIM Bangalore–NSRCEL, TinkerQubits Foundation empowers children from low-income schools and nonprofits with future-ready digital and STEM skills. Our work builds digital competence, curiosity, and innovation—ensuring no child is left behind in a digital-first world.
           </p>
           <button class="cta-button" onclick="document.getElementById('problem-section').scrollIntoView({ behavior: 'smooth' });">
             Get Started
@@ -2056,7 +2112,7 @@
       </div>
     </section>
 
-    <h1 style="color: black; font-size: 42px; text-align: center; margin: 40px 0 20px 0;">Problem and Solution</h1>
+    <h1 style="font-size: 3.5rem; text-align: center; margin: 40px 0 20px 0;">Problem and Solution</h1>
     <section class="problem-section" id="problem-section">
       <!-- PROBLEM (IMAGE LEFT - TEXT RIGHT) -->
       <div class="row">
@@ -2070,10 +2126,14 @@
         <div class="right text-box">
           <h2>The Problem</h2>
           <p>
-            Many students face digital divides such as lack of access, poor
-            learning support, and limited digital skills. These issues reduce
-            opportunities for growth.
+            In India, the digital divide in school education goes far beyond access to devices.
+            Millions of children lack reliable digital infrastructure, structured learning pathways, and age-appropriate digital curriculum .
+            This results in deep gaps in digital skills, critical thinking, creativity and online health—shaping unequal futures in an increasingly digital world.
+
           </p>
+          <button class="arrow-button" onclick="openProblemPopup()">
+            <span class="arrow-icon">→</span>
+          </button>
         </div>
       </div>
 
@@ -2083,9 +2143,9 @@
       <div class="row">
         <div class="left text-box">
           <h2>Our Solution</h2>
+          <h3>Our Theory of Change: Building Conscious Tech Communities</h3>
           <p>
-            We provide digital learning, awareness, and essential digital skills
-            so that students become confident and ready for the future.
+            If children from underserved communities have access to age-appropriate digital curriculum, trained and motivated educators, and affordable digital infrastructure, then they will develop strong digital foundations, critical thinking, and ethical awareness, leading to conscious tech communities where technology is used safely, creatively, and for social good—unlocking lifelong learning, workforce readiness, and social mobility.
           </p>
         </div>
 
@@ -2108,17 +2168,14 @@
     <!-- vision mission -->
     <section class="vm-container" id="vision-mission">
       
-      <h1 class="vm-header">Vision Mission</h1>
+      <h1>Vision Mission</h1>
       <!-- Vision Section -->
       <div class="vision-section">
         <div class="vision-box">
           <div class="vision-content">
             <h2>Vision</h2>
             <p>
-              To be the leading innovator in our industry, transforming ideas
-              into reality while creating sustainable value for our
-              stakeholders. We envision a future where our solutions empower
-              communities and drive positive change globally.
+              Equipping every child to thrive in a tech-driven world, becoming a resource for themselves and their community.
             </p>
           </div>
         </div>
@@ -2135,10 +2192,8 @@
           <div class="mission-content">
             <h2>Mission</h2>
             <p>
-              We are committed to delivering exceptional products and services
-              that exceed expectations. Through innovation, integrity, and
-              collaboration, we strive to create meaningful impact while
-              fostering growth for our team and community.
+              To build and nurture a community of 500000 ed-tech leaders by 2030 to unlock the vast potential of STEM and Tech by making it relevant, equitable and accessible for our children and youth
+
             </p>
           </div>
         </div>
@@ -2153,6 +2208,7 @@
       <div class="main-container">
         <div class="header">
           <h1>Our Publications & Platform</h1>
+          <p>The TinkerQubits Curriculum Framework (Grades 1–10) is a child-centric approach to computer education designed for today's digital world. Built on digital skills, safety, sustainability, and emerging technologies, it nurtures critical thinking and responsible tech use. Delivered through 10 structured textbooks, it empowers children to become conscious creators—not just consumers—of technology.</p>
         </div>
 
         <div class="content-wrapper">
@@ -2169,7 +2225,7 @@
                 <div class="book-spine"></div>
                 <img src="images/10th.png" alt="Book 10 Cover" />
               </div>
-              <div class="book-title">Book 10 Title</div>
+              <div class="book-title">Book 10</div>
               <button
                 class="read-btn"
                 onclick="openModal('books/10th.pdf')"
@@ -2190,7 +2246,7 @@
                 <div class="book-spine"></div>
                 <img src="images/9thbook.png" alt="Book 9 Cover" />
               </div>
-              <div class="book-title">Book 9 Title</div>
+              <div class="book-title">Book 9</div>
               <button
                 class="read-btn"
                 onclick="openModal('books/9th.pdf')"
@@ -2211,7 +2267,7 @@
                 <div class="book-spine"></div>
                 <img src="images/8thbook.png" alt="Book 8 Cover" />
               </div>
-              <div class="book-title">Book 8 Title</div>
+              <div class="book-title">Book 8</div>
               <button
                 class="read-btn"
                 onclick="openModal('books/8th.pdf')"
@@ -2232,7 +2288,7 @@
                 <div class="book-spine"></div>
                 <img src="images/7thbook.png" alt="Book 7 Cover" />
               </div>
-              <div class="book-title">Book 7 Title</div>
+              <div class="book-title">Book 7</div>
               <button
                 class="read-btn"
                 onclick="openModal('books/7th.pdf')"
@@ -2253,7 +2309,7 @@
                 <div class="book-spine"></div>
                 <img src="images/6thbook.png" alt="Book 6 Cover" />
               </div>
-              <div class="book-title">Book 6 Title</div>
+              <div class="book-title">Book 6</div>
               <button
                 class="read-btn"
                 onclick="openModal('books/6th.pdf')"
@@ -2275,7 +2331,7 @@
                 <div class="book-spine"></div>
                 <img src="images/5thbook.png" alt="Book 5 Cover" />
               </div>
-              <div class="book-title">Book 5 Title</div>
+              <div class="book-title">Book 5</div>
               <button
                 class="read-btn"
                 onclick="openModal('books/5th.pdf')"
@@ -2296,7 +2352,7 @@
                 <div class="book-spine"></div>
                 <img src="images/4thbook.png" alt="Book 4 Cover" />
               </div>
-              <div class="book-title">Book 4 Title</div>
+              <div class="book-title">Book 4</div>
               <button
                 class="read-btn"
                 onclick="openModal('books/4th.pdf')"
@@ -2317,7 +2373,7 @@
                 <div class="book-spine"></div>
                 <img src="images/3rdbook.png" alt="Book 3 Cover" />
               </div>
-              <div class="book-title">Book 3 Title</div>
+              <div class="book-title">Book 3</div>
               <button
                 class="read-btn"
                 onclick="openModal('books/3rd.pdf')"
@@ -2338,7 +2394,7 @@
                 <div class="book-spine"></div>
                 <img src="images/2ndbook.png" alt="Book 2 Cover" />
               </div>
-              <div class="book-title">Book 2 Title</div>
+              <div class="book-title">Book 2</div>
               <button
                 class="read-btn"
                 onclick="openModal('books/2nd.pdf')"
@@ -2359,7 +2415,7 @@
                 <div class="book-spine"></div>
                 <img src="images/1stbook.jpg" alt="Book 1 Cover" />
               </div>
-              <div class="book-title">Book 1 Title</div>
+              <div class="book-title">Book 1</div>
               <button
                 class="read-btn"
                 onclick="openModal('books/1st.pdf')"
@@ -2398,14 +2454,7 @@
 
               <div class="platform-description">
                 <p>
-                  Web’O Block is a beginner-friendly drag-and-drop platform for
-                  building websites. You can design pages using blocks, just
-                  like arranging puzzle pieces. As you create, you also
-                  understand the core of HTML and CSS. Web’O Block is a
-                  beginner-friendly drag-and-drop platform for building
-                  websites. You can design pages using blocks, just like
-                  arranging puzzle pieces. As you create, you also understand
-                  the core of HTML and CSS.
+                  Web’O Block is a revolutionary one-for-all web development platform designed to bridge the gap between visual design and code, making website creation accessible to everyone from students and hobbyists to professional developers.
                 </p>
               </div>
             </div>
@@ -2439,7 +2488,7 @@
     </div>
 
     <section class="partners-section">
-      <h2 class="section-title">Our Trusted Partners & Supporters</h2>
+      <h1 class="section-title">Our Trusted Partners & Supporters</h1>
 
       <div class="partners-grid">
         <div class="partner-card">
@@ -2516,7 +2565,7 @@
       </div>
 
       <div class="incubation-section">
-        <h2 class="section-title">Our Incubation & Associations</h2>
+        <h1 class="section-title">Our Incubation & Associations</h1>
 
         <div class="incubation-grid">
           <div class="incubation-card">
@@ -2597,6 +2646,25 @@
         © 2024 TinkerQubits Foundation. All Rights Reserved.
       </div>
     </footer>
+
+    <!-- Popup for Problem Details -->
+    <div id="problemPopup" class="popup-overlay">
+      <div class="popup-content">
+        <span class="popup-close" onclick="closeProblemPopup()" title="Close">&times;</span>
+        <h2>Infrastructure Divide</h2>
+        <p>In India, over one-third of schools still lack access to computers, and nearly half do not have functional internet connectivity, with the gaps deepest in rural and government schools (UDISE+). Without reliable electricity, devices, or open digital labs, millions of children are excluded from hands-on learning—before digital education even begins.</p>
+
+        <h2>Access Divide</h2>
+        <p>Access to digital learning remains highly unequal. While private schools increasingly integrate technology, most government and low budget schools rely on sporadic, unstructured digital exposure, not a continuous, age-appropriate curriculum.</p>
+
+        <h2>Learning Divide</h2>
+        <p>Digital education in schools often focuses on surface-level tool use rather than deep understanding. As per ASER report many adolescents can operate smartphones but struggle with tasks like navigating educational platforms, evaluating information, or learning safely online. Digital safety, ethics, and critical engagement are rarely taught systematically.</p>
+
+        <h2>Skills and Thinking Divide</h2>
+        <p>The most dangerous gap is not access—but outcomes. Children with early, guided exposure develop problem-solving, computational thinking, and digital confidence, while others are left with only basic operational skills. This widening skills divide reinforces existing inequalities and threatens to lock millions of children out of future education and employment opportunities in a digital economy.</p>
+      </div>
+    </div>
+
   </body>
   <script>
     function openModal(pdfFile) {
@@ -2625,7 +2693,7 @@
 
     function visitPlatform() {
       // Replace 'YOUR_PLATFORM_URL' with your actual platform URL
-      window.open("https://your-platform-url.com", "_blank");
+      window.open("https://www.weboblocks.com/", "_blank");
     }
 
     function handlePlatformKeyPress(event) {
@@ -2673,6 +2741,24 @@
       const navMenu = document.getElementById("nav-menu");
       navMenu.classList.toggle("active");
     }
+
+    function openProblemPopup() {
+      document.getElementById("problemPopup").style.display = "flex";
+      document.body.style.overflow = "hidden"; // Prevent background scrolling
+    }
+
+    function closeProblemPopup() {
+      document.getElementById("problemPopup").style.display = "none";
+      document.body.style.overflow = "auto"; // Restore scrolling
+    }
+
+    // Close popup when clicking outside
+    window.onclick = function (event) {
+      const popup = document.getElementById("problemPopup");
+      if (event.target === popup) {
+        closeProblemPopup();
+      }
+    };
   </script>
   </body>
 </html>

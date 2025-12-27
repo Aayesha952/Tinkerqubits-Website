@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programs - TinkerQubits Foundation</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+   <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: white;
+        color: #2c3e50;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* NAVBAR STYLES */
+      .navbar {
+        background-color: white;
+        padding: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        height: 60px;
+        position: relative;
+      }
+
+      .logo img {
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 26px;
+        color: #333;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-link {
+        display: block;
+        color: black;
+        text-decoration: none;
+        padding: 15px 20px;
+        font-size: 16px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      /* MAIN CONTENT */
+      .main-content {
+        position: relative;
+        padding: 40px 20px;
+      }
+
+      /* Full-screen pattern layer */
+      .background-pattern {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.35;
+      }
+
+      .background-pattern svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .partners-section {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* HERO SECTION */
+      .hero-content-section {
+        padding: 4rem 3rem 2rem 3rem;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+        font-weight: bolder;
+        background: black;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
+        animation: slideInDown 0.8s ease-out;
+      }
+
+      .hero-subtitle {
+        font-size: 1.3rem;
+        color: #4a5568;
+        max-width: 800px;
+        margin: 1.2rem auto;
+        opacity: 0;
+        animation: slideUp 1s ease 0.3s forwards;
+      }
+
+      /* HERO STATS */
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 3rem;
+        opacity: 0;
+        animation: slideUp 1s ease 0.6s forwards;
+      }
+
+      .stat-item {
+        background: rgba(255, 255, 255, 0.6);
+        padding: 1.5rem 2rem;
+        border-radius: 18px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      }
+
+      .stat-label {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #333;
+      }
+
+      .stat-description {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      /* PROGRAM SECTION */
+      .programs-section {
+        padding: 4rem 3rem;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 3rem;
+        color: #111;
+        font-weight: 800;
+        margin-bottom: 1rem;
+      }
+
+      .section-description {
+        text-align: center;
+        color: #4a5568;
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 3rem;
+      }
+
+      /* PROGRAM CARDS GRID */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .program-card {
+        background: rgba(220, 235, 245, 0.6);
+        border-radius: 15px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+        transition: 0.35s ease;
+        position: relative;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .program-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+      }
+
+      .card-image {
+        height: 200px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.35s ease;
+      }
+
+      .program-card:hover .card-image img {
+        transform: scale(1.06);
+      }
+
+      .card-overlay {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 6px 12px;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: black;
+        z-index: 1;
+      }
+
+      .card-content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        position: relative;
+        padding-bottom: 4rem;
+      }
+
+      .card-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.6rem;
+      }
+
+      .card-description {
+        color: #636363;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+        text-align: justify;
+      }
+
+      .card-stats {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 1rem;
+        border-top: 1px solid #e5e7eb;
+        margin-top: auto;
+      }
+
+      .card-stat-number {
+        color: black;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .card-stat-label {
+        font-size: 0.75rem;
+        color: #777;
+      }
+
+      .card-arrow {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.9;
+        transform: translateX(0);
+        transition: 0.35s ease;
+      }
+
+      .program-card:hover .card-arrow {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      /* FOOTER STYLES */
+      footer {
+        background-color: #312e81;
+        color: #ffffff;
+        padding: 40px 60px;
+        margin-top: 60px;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: flex-end;
+        gap: 30px;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+
+      .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #ccc;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 60px;
+      }
+
+      .footer-left {
+        flex: 1;
+        min-width: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-left img {
+        max-width: 180px;
+        margin-bottom: 20px;
+      }
+
+      .footer-social-icons {
+        display: flex;
+        gap: 20px;
+      }
+
+      .footer-social-icons a {
+        color: #00ff88;
+        font-size: 20px;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-social-icons a:hover {
+        color: #ffffff;
+      }
+
+      .footer-center {
+        flex: 1;
+        min-width: 280px;
+      }
+
+      .footer-center h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: #ffffff;
+      }
+
+      .footer-center p {
+        margin: 6px 0;
+        color: #ffffff;
+        font-size: 14px;
+      }
+
+      .footer-center i {
+        margin-right: 8px;
+        color: #00ff88;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        font-size: 13px;
+        color: #ffff;
+        border-top: 1px solid #333;
+        margin-top: 30px;
+      }
+
+      /* ANIMATION */
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        .cards-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        /* Navbar mobile */
+        .nav-container {
+          flex-wrap: wrap;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-menu {
+          flex-direction: column;
+          background: white;
+          width: 100%;
+          display: none;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          z-index: 999;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-menu.active {
+          display: flex;
+        }
+
+        .nav-item {
+          width: 100%;
+        }
+
+        .nav-link {
+          padding: 15px 20px;
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+          width: 100%;
+        }
+
+        .nav-link:first-child {
+          border-top: none;
+        }
+
+        /* Cards mobile */
+        .cards-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card-description {
+          text-align: justify;
+        }
+
+        .hero-stats {
+          flex-direction: column;
+        }
+
+        /* Footer mobile */
+        .footer-links {
+          justify-content: center;
+          flex-wrap: wrap;
+          text-align: center;
+          gap: 15px;
+        }
+
+        .footer-container {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 30px;
+        }
+
+        .footer-left img {
+          margin: 0 auto 20px;
+        }
+
+        .footer-social-icons {
+          justify-content: center;
+        }
+
+        .footer-center {
+          align-items: center;
+        }
+      }
+
+      @media (max-width: 992px) and (min-width: 769px) {
+        .nav-container {
+          padding: 0 15px;
+        }
+
+        .nav-link {
+          padding: 15px 12px;
+          font-size: 14px;
+        }
+      }
+    </style>
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <img src="images/logo-v3-cut-275x116.png" alt="TinkerQubits Logo" />
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li class="nav-item">
+            <a href="home.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="pg.html" class="nav-link">Programs</a>
+          </li>
+          <li class="nav-item">
+            <a href="impact.html" class="nav-link">Outreach</a>
+          </li>
+          <li class="nav-item">
+            <a href="journey.html" class="nav-link">Journey</a>
+          </li>
+          <li class="nav-item">
+            <a href="Team-final.html" class="nav-link">Team</a>
+          </li>
+          <li class="nav-item">
+            <a href="gallery.html" class="nav-link">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a href="join.html" class="nav-link">Join Us</a>
+          </li>
+          <li class="nav-item">
+            <a href="testimonial.html" class="nav-link">Testimonials</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+      <div class="background-pattern">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <pattern
+              id="techPattern"
+              width="450"
+              height="450"
+              patternUnits="userSpaceOnUse"
+            >
+              <!-- Python Logo -->
+              <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="2" fill="none">
+                <path
+                  d="M50 60 Q50 45 65 45 L90 45 Q105 45 105 60 L105 95 Q105 105 95 105 L75 105"
+                />
+                <path
+                  d="M105 110 Q105 125 90 125 L65 125 Q50 125 50 110 L50 75 Q50 65 60 65 L85 65"
+                />
+                <circle cx="60" cy="55" r="3" fill="rgba(74, 111, 165, 0.4)" />
+                <circle cx="95" cy="115" r="3" fill="rgba(74, 111, 165, 0.4)" />
+              </g>
+
+              <!-- HTML Tags <> -->
+              <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="3" fill="none">
+                <path d="M330 55 L315 70 L330 85" />
+                <path d="M360 55 L375 70 L360 85" />
+              </g>
+
+              <!-- Curly Braces {} -->
+              <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="3" fill="none">
+                <path
+                  d="M220 45 Q210 45 210 55 L210 70 Q210 77 200 77 Q210 77 210 84 L210 99 Q210 109 220 109"
+                />
+                <path
+                  d="M250 45 Q260 45 260 55 L260 70 Q260 77 270 77 Q260 77 260 84 L260 99 Q260 109 250 109"
+                />
+              </g>
+
+              <!-- Square Brackets [] -->
+              <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="3" fill="none">
+                <path d="M170 190 L150 190 L150 235 L170 235" />
+                <path d="M190 190 L210 190 L210 235 L190 235" />
+              </g>
+
+              <!-- Computer/Laptop -->
+              <g
+                stroke="rgba(74, 111, 165, 0.4)"
+                stroke-width="2.5"
+                fill="none"
+              >
+                <rect x="40" y="280" width="80" height="55" rx="5" />
+                <rect x="48" y="288" width="64" height="40" rx="3" />
+                <rect x="55" y="335" width="50" height="6" rx="3" />
+              </g>
+
+              <!-- Book -->
+              <g
+                stroke="rgba(74, 111, 165, 0.4)"
+                stroke-width="2.5"
+                fill="none"
+              >
+                <rect x="310" y="180" width="55" height="70" rx="4" />
+                <line x1="337" y1="180" x2="337" y2="250" />
+                <line x1="320" y1="200" x2="332" y2="200" />
+                <line x1="320" y1="215" x2="332" y2="215" />
+                <line x1="320" y1="230" x2="332" y2="230" />
+              </g>
+
+              <!-- Raspberry Pi Board -->
+              <g
+                stroke="rgba(74, 111, 165, 0.4)"
+                stroke-width="2.5"
+                fill="none"
+              >
+                <rect x="210" y="290" width="80" height="65" rx="4" />
+                <line x1="218" y1="302" x2="280" y2="302" stroke-width="1.5" />
+                <line x1="218" y1="308" x2="280" y2="308" stroke-width="1.5" />
+                <rect x="225" y="322" width="24" height="20" />
+                <rect x="260" y="322" width="16" height="16" />
+                <rect x="218" y="345" width="13" height="8" />
+                <rect x="240" y="345" width="13" height="8" />
+              </g>
+
+              <!-- Electronic Circuit -->
+              <g
+                stroke="rgba(74, 111, 165, 0.4)"
+                stroke-width="2.5"
+                fill="none"
+              >
+                <line x1="330" y1="300" x2="390" y2="300" />
+                <line x1="330" y1="325" x2="390" y2="325" />
+                <rect x="345" y="293" width="20" height="14" />
+                <circle cx="375" cy="300" r="6" />
+                <line x1="370" y1="295" x2="365" y2="290" />
+                <line x1="375" y1="295" x2="370" y2="290" />
+                <line x1="355" y1="318" x2="355" y2="332" />
+                <line x1="360" y1="318" x2="360" y2="332" />
+              </g>
+
+              <!-- Web Browser Window -->
+              <g
+                stroke="rgba(74, 111, 165, 0.4)"
+                stroke-width="2.5"
+                fill="none"
+              >
+                <rect x="40" y="180" width="75" height="58" rx="4" />
+                <line x1="40" y1="193" x2="115" y2="193" />
+                <circle
+                  cx="48"
+                  cy="186.5"
+                  r="2.5"
+                  fill="rgba(74, 111, 165, 0.4)"
+                />
+                <circle
+                  cx="58"
+                  cy="186.5"
+                  r="2.5"
+                  fill="rgba(74, 111, 165, 0.4)"
+                />
+                <circle
+                  cx="68"
+                  cy="186.5"
+                  r="2.5"
+                  fill="rgba(74, 111, 165, 0.4)"
+                />
+                <line x1="50" y1="208" x2="100" y2="208" />
+                <line x1="50" y1="220" x2="92" y2="220" />
+              </g>
+
+              <!-- Light Bulb -->
+              <g
+                stroke="rgba(74, 111, 165, 0.4)"
+                stroke-width="2.5"
+                fill="none"
+              >
+                <circle cx="360" cy="400" r="16" />
+                <rect x="350" y="416" width="20" height="13" rx="3" />
+                <line x1="337" y1="390" x2="330" y2="383" />
+                <line x1="383" y1="390" x2="390" y2="383" />
+              </g>
+
+              <!-- Database -->
+              <g
+                stroke="rgba(74, 111, 165, 0.4)"
+                stroke-width="2.5"
+                fill="none"
+              >
+                <ellipse cx="230" cy="400" rx="25" ry="8" />
+                <ellipse cx="230" cy="425" rx="25" ry="8" />
+                <line x1="205" y1="400" x2="205" y2="425" />
+                <line x1="255" y1="400" x2="255" y2="425" />
+              </g>
+
+              <!-- WiFi Signal -->
+              <g
+                stroke="rgba(74, 111, 165, 0.4)"
+                stroke-width="2.5"
+                fill="none"
+              >
+                <circle cx="80" cy="420" r="3" fill="rgba(74, 111, 165, 0.4)" />
+                <path d="M63 407 Q72 402 80 407" />
+                <path d="M55 395 Q72 387 89 395" />
+                <path d="M47 383 Q72 372 97 383" />
+              </g>
+
+              <!-- Small decorative dots -->
+              <g fill="rgba(74, 111, 165, 0.3)">
+                <circle cx="160" cy="85" r="3.5" />
+                <circle cx="285" cy="140" r="3.5" />
+                <circle cx="410" cy="90" r="3.5" />
+                <circle cx="145" cy="340" r="3.5" />
+                <circle cx="300" cy="440" r="3.5" />
+                <circle cx="420" cy="240" r="3.5" />
+              </g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#techPattern)" />
+        </svg>
+      </div>
+
+      <section class="hero-content-section">
+        <h1 class="hero-title">Our Programs</h1>
+        <p class="hero-subtitle">
+          Transforming education through innovative technology initiatives
+          across Mumbai, Pune, and Bangalore
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-label">Students Impacted</div>
+            <div class="stat-description">Across all programs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Partner Schools</div>
+            <div class="stat-description">Educational institutions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Cities</div>
+            <div class="stat-description">Mumbai, Pune, Bangalore</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMS SECTION -->
+      <section class="programs-section">
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-description">
+        </p>
+
+        <div class="cards-grid">
+          <!-- CARD 1 -->
+          <a href="tech-for-teachers.html" class="program-card">
+            <div class="card-image">
+              <img src="images/IMG20250201142944.jpg" alt="Tech for Teachers" />
+              <div class="card-overlay">Training Program</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Tech for Teachers</h3>
+              <p class="card-description">
+               Tech for Teacher is a dedicated teacher upskilling and capacity-building program designed to strengthen elementary computer science education by building teacher agency, confidence, and leadership.
+               By empowering teachers as digital educators and leaders, Tech for Teacher ensures sustainable, high-quality computer science education—preparing students not just for today’s classrooms, but for future-ready STEM careers.
+ 
+              </p>
+
+              <div class="card-stats">
+                <div>
+                  <div class="card-stat-number">500+</div>
+                  <div class="card-stat-label">Teachers Trained</div>
+                </div>
+                <div>
+                  <div class="card-stat-number">15+</div>
+                  <div class="card-stat-label">Workshops</div>
+                </div>
+                <div>
+                  <div class="card-stat-number">3</div>
+                  <div class="card-stat-label">Cities</div>
+                </div>
+              </div>
+
+              <div class="card-arrow">→</div>
+            </div>
+          </a>
+
+          <!-- CARD 2 -->
+          <a href="tech-for-school.html" class="program-card">
+            <div class="card-image">
+              <img src="images/IMG20250201143405.jpg" alt="Tech for School" />
+              <div class="card-overlay">School Program</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Tech for School</h3>
+              <p class="card-description">
+                Tech for Schools is an in-school ( part of regular school computer period)program designed to strengthen elementary and secondary computer science education (Grades 1–10) by transforming how technology is taught and experienced by students.
+                By integrating curriculum, teacher capacity, and infrastructure, Tech for Schools ensures children gain early, continuous, and equitable exposure to computer science—fostering curiosity, critical thinking, and a deeper understanding of growing in technology-driven world.
+
+              </p>
+
+              <div class="card-stats">
+                <div>
+                  <div class="card-stat-number">50+</div>
+                  <div class="card-stat-label">Partner Schools</div>
+                </div>
+                <div>
+                  <div class="card-stat-number">2000+</div>
+                  <div class="card-stat-label">Students</div>
+                </div>
+                <div>
+                  <div class="card-stat-number">3</div>
+                  <div class="card-stat-label">Cities</div>
+                </div>
+              </div>
+
+              <div class="card-arrow">→</div>
+            </div>
+          </a>
+
+          <!-- CARD 3 -->
+          <a href="TMM_program.html" class="program-card">
+            <div class="card-image">
+              <img
+                src="images/IMG20250201143934.jpg"
+                alt="Thinker Makers Mela"
+              />
+              <div class="card-overlay">Annual Event</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">TMM (Thinker Maker's Mela)</h3>
+              <p class="card-description">
+       Thinkers Makers Mela (TMM) is TinkerQubits Foundation’s annual flagship showcase and community-building event, bringing together students, educators, and technology enthusiasts to celebrate learning through creation.
+       By emphasizing making, sharing, and reflection, Thinkers Makers Mela reinforces the journey from access to agency—showcasing how equitable digital education can spark innovation, ownership, and social change."
+              </p>
+
+              <div class="card-stats">
+                <div>
+                  <div class="card-stat-number">4</div>
+                  <div class="card-stat-label">Editions</div>
+                </div>
+                <div>
+                  <div class="card-stat-number">1000+</div>
+                  <div class="card-stat-label">Participants</div>
+                </div>
+                <div>
+                  <div class="card-stat-number">20+</div>
+                  <div class="card-stat-label">Events</div>
+                </div>
+              </div>
+
+              <div class="card-arrow">→</div>
+            </div>
+          </a>
+
+          <!-- CARD 4 -->
+          <a href="tech_tribe.html" class="program-card">
+            <div class="card-image">
+              <img src="images/IMG20250201143529.jpg" alt="Tech Tribe" />
+              <div class="card-overlay">Community Program</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Tech Tribe</h3>
+              <p class="card-description">
+                Tech tribe Tech Tribes is a student leadership and peer-learning program designed to build sustainable, student-led technology communities. Structured as democratic, after-school clubs for students in Grades 6–9, the program nurtures agency, collaboration, and responsible technology use.
+                By placing students at the center of learning and leadership, Tech Tribes cultivates conscious tech communities—empowering young people to use technology consciously, ethically and creatively for real-world.
+
+              </p>
+
+              <div class="card-stats">
+                <div>
+                  <div class="card-stat-number">300+</div>
+                  <div class="card-stat-label">Members</div>
+                </div>
+                <div>
+                  <div class="card-stat-number">25+</div>
+                  <div class="card-stat-label">Projects</div>
+                </div>
+                <div>
+                  <div class="card-stat-number">3</div>
+                  <div class="card-stat-label">Cities</div>
+                </div>
+              </div>
+
+              <div class="card-arrow">→</div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <div class="footer-container">
+        <div class="footer-left">
+          <img src="images/logo-v3-cut-275x116.png" alt="TinkerQubits Logo" />
+          <div class="footer-social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-center">
+          <h3><strong>TinkerQubits Foundation</strong></h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> TinkerQubits Foundation, 7/2,
+            Assisi Nagar, P.L Lokhande Marg, Chembur(W), Mumbai - 400089
+          </p>
+          <p><i class="fas fa-phone"></i> +91 98190 44922 | +91 8624 995979</p>
+          <p>
+            <i class="fas fa-envelope"></i> rinsa@tinkerqubits.org |
+            info@tinkerqubits.org
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2024 TinkerQubits Foundation. All Rights Reserved.
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const navMenu = document.getElementById("nav-menu");
+        navMenu.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

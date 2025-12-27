@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Publications & Platform</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+
+        padding: 20px;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .main-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .header h1 {
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        font-weight: 300;
+        color: #2c3e50;
+        border: 3px solid #2c3e50;
+        border-radius: 15px;
+        padding: 15px 25px;
+        display: inline-block;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        word-break: break-word;
+      }
+
+      .content-wrapper {
+        display: grid;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .publications-grid {
+        display: grid;
+        gap: 20px;
+        justify-items: center;
+      }
+
+      .book-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 180px;
+      }
+
+      .book-cover {
+        width: 120px;
+        height: 170px;
+        border: 3px solid #2c3e50;
+        border-radius: 8px;
+        background: white;
+        margin-bottom: 15px;
+        position: relative;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .book-cover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .book-spine {
+        position: absolute;
+        left: -3px;
+        top: 0;
+        width: 12px;
+        height: 100%;
+        background: linear-gradient(135deg, #34495e, #2c3e50);
+        border-radius: 3px 0 0 3px;
+      }
+
+      .book-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .book-title {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #2c3e50;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        word-break: break-word;
+      }
+
+      .read-btn {
+        background: #00bfff;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .read-btn:hover {
+        background: #008ac6;
+      }
+
+      .platform-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .platform-container {
+        width: 100%;
+        max-width: 370px;
+        min-height: 350px;
+        border: 3px solid #2c3e50;
+        border-radius: 15px;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+      .platform-screenshot {
+        display: flex;
+        justify-content: center; /* horizontally center */
+        align-items: center; /* vertically center */
+      }
+
+      .platform-screenshot img {
+        max-width: 90%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .browser-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ecf0f1;
+      }
+
+      .browser-dots {
+        display: flex;
+        gap: 6px;
+        margin-right: 15px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #bdc3c7;
+      }
+
+      .dot:first-child {
+        background: #e74c3c;
+      }
+      .dot:nth-child(2) {
+        background: #f39c12;
+      }
+      .dot:nth-child(3) {
+        background: #27ae60;
+      }
+
+      .platform-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .content-box {
+        height: 80px;
+        border: 2px solid #bdc3c7;
+        border-radius: 8px;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: #7f8c8d;
+        transition: all 0.3s ease;
+      }
+
+      .content-box:hover {
+        background: #e3f2fd;
+        border-color: #3498db;
+      }
+
+      .content-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+
+      .content-lines {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .content-lines p {
+        font-size: 12px;
+        line-height: 1.4;
+        color: #2c3e50;
+        text-align: justify;
+      }
+
+      .platform-title {
+        margin-top: 15px;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      .modal-content {
+        position: relative;
+        margin: 2% auto;
+        width: 95%;
+        height: 90%;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .modal-content iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 28px;
+        color: red;
+        cursor: pointer;
+        z-index: 1001;
+        background: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Responsive Breakpoints */
+
+      /* Large Tablets and Small Desktops */
+      @media (min-width: 1024px) {
+        body {
+          padding: 40px 20px;
+        }
+
+        .header {
+          margin-bottom: 60px;
+        }
+
+        .content-wrapper {
+          grid-template-columns: 2fr 1fr;
+          gap: 60px;
+        }
+
+        .publications-grid {
+          grid-template-columns: repeat(5, 1fr);
+          gap: 30px;
+        }
+
+        .book-cover {
+          width: 140px;
+          height: 200px;
+        }
+
+        .book-title {
+          font-size: 1rem;
+          max-width: 140px;
+        }
+
+        .platform-container {
+          max-width: 500px;
+          padding: 18px;
+        }
+
+        .platform-screenshot img {
+          max-height: 240px;
+        }
+      }
+
+      /* Medium Tablets */
+      @media (min-width: 768px) and (max-width: 1023px) {
+        .content-wrapper {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .publications-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 25px;
+        }
+
+        .book-cover {
+          width: 130px;
+          height: 185px;
+        }
+
+        .platform-container {
+          max-width: 450px;
+          padding: 16px;
+        }
+
+        .platform-screenshot img {
+          max-height: 200px;
+        }
+      }
+
+      /* Small Tablets */
+      @media (min-width: 640px) and (max-width: 767px) {
+        .content-wrapper {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .publications-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+
+        .book-cover {
+          width: 120px;
+          height: 170px;
+        }
+
+        .platform-container {
+          max-width: 380px;
+          padding: 15px;
+        }
+
+        .platform-screenshot img {
+          max-height: 180px;
+        }
+      }
+
+      /* Large Mobile Phones */
+      @media (min-width: 480px) and (max-width: 639px) {
+        body {
+          padding: 15px;
+        }
+
+        .header {
+          margin-bottom: 30px;
+        }
+
+        .header h1 {
+          padding: 12px 20px;
+        }
+
+        .content-wrapper {
+          grid-template-columns: 1fr;
+          gap: 35px;
+        }
+
+        .publications-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .book-cover {
+          width: 110px;
+          height: 155px;
+        }
+
+        .book-title {
+          font-size: 0.85rem;
+        }
+
+        .platform-container {
+          max-width: 340px;
+          padding: 15px;
+          min-height: 380px;
+        }
+
+        .platform-screenshot img {
+          max-height: 160px;
+        }
+
+        .visit-platform-btn {
+          font-size: 14px;
+          padding: 10px 16px;
+        }
+
+        .platform-description p {
+          font-size: 13px;
+        }
+
+        .content-box {
+          height: 70px;
+        }
+
+        .content-lines p {
+          font-size: 11px;
+        }
+      }
+
+      /* Small Mobile Phones */
+      @media (max-width: 479px) {
+        body {
+          padding: 10px;
+        }
+
+        .header {
+          margin-bottom: 25px;
+        }
+
+        .header h1 {
+          padding: 10px 15px;
+          border-radius: 10px;
+        }
+
+        .content-wrapper {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .publications-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 15px;
+        }
+
+        .book-item {
+          max-width: 140px;
+        }
+
+        .book-cover {
+          width: 100px;
+          height: 140px;
+        }
+
+        .book-title {
+          font-size: 0.8rem;
+          line-height: 1.2;
+        }
+
+        .read-btn {
+          padding: 6px 12px;
+          font-size: 12px;
+        }
+
+        .platform-container {
+          max-width: 300px;
+          padding: 12px;
+          min-height: 350px;
+        }
+
+        .platform-screenshot img {
+          max-height: 140px;
+        }
+
+        .visit-platform-btn {
+          font-size: 13px;
+          padding: 8px 14px;
+        }
+
+        .platform-description p {
+          font-size: 12px;
+          line-height: 1.5;
+        }
+
+        .content-lines p {
+          font-size: 10px;
+          line-height: 1.3;
+        }
+
+        .platform-title {
+          font-size: 1rem;
+          margin-top: 10px;
+        }
+
+        .modal-content {
+          margin: 5% auto;
+          width: 98%;
+          height: 85%;
+        }
+
+        .close {
+          top: 5px;
+          right: 10px;
+          font-size: 24px;
+          width: 35px;
+          height: 35px;
+        }
+      }
+
+      /* Extra Small Mobile Phones */
+      @media (max-width: 360px) {
+        .publications-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+
+        .book-cover {
+          width: 90px;
+          height: 125px;
+        }
+
+        .book-title {
+          font-size: 0.75rem;
+        }
+
+        .read-btn {
+          padding: 5px 10px;
+          font-size: 11px;
+        }
+
+        .platform-container {
+          max-width: 300px;
+          padding: 12px;
+          min-height: 320px;
+        }
+
+        .platform-screenshot img {
+          max-height: 150px;
+        }
+
+        .visit-platform-btn {
+          font-size: 12px;
+          padding: 8px 12px;
+        }
+
+        .platform-description p {
+          font-size: 11px;
+          line-height: 1.4;
+        }
+      }
+
+      /* Landscape orientation adjustments */
+      @media (max-height: 500px) and (orientation: landscape) {
+        body {
+          padding: 10px;
+        }
+
+        .header {
+          margin-bottom: 20px;
+        }
+
+        .header h1 {
+          font-size: 1.5rem;
+          padding: 8px 15px;
+        }
+
+        .content-wrapper {
+          gap: 25px;
+        }
+
+        .modal-content {
+          margin: 1% auto;
+          height: 95%;
+        }
+      }
+
+      /* High DPI displays */
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .book-cover img {
+          image-rendering: -webkit-optimize-contrast;
+          image-rendering: crisp-edges;
+        }
+      }
+
+      /* Print styles */
+      @media print {
+        body {
+          background: white;
+          padding: 20px;
+        }
+
+        .header h1 {
+          color: black;
+          border-color: black;
+        }
+
+        .book-title,
+        .platform-title {
+          color: black;
+        }
+
+        .read-btn,
+        .modal {
+          display: none;
+        }
+      }
+
+      /* Focus styles for accessibility */
+      .read-btn:focus,
+      .book-cover:focus {
+        outline: 3px solid #00bfff;
+        outline-offset: 2px;
+      }
+
+      .close:focus {
+        outline: 3px solid #e74c3c;
+        outline-offset: 2px;
+      }
+
+      /* Touch targets for mobile */
+      @media (max-width: 768px) {
+        .read-btn {
+          min-height: 44px;
+          min-width: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .book-cover {
+          min-height: 44px;
+          min-width: 44px;
+        }
+
+        .close {
+          min-height: 44px;
+          min-width: 44px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="main-container">
+        <div class="header">
+          <h1>Our Publications & Platform</h1>
+        </div>
+
+        <div class="content-wrapper">
+          <div class="publications-grid">
+            <!-- Row 1 -->
+            <div class="book-item">
+              <div
+                class="book-cover"
+                tabindex="0"
+                role="button"
+                onclick="openModal('1st-Index.docx.pdf')"
+                onkeydown="handleKeyPress(event, '1st-Index.docx.pdf')"
+              >
+                <div class="book-spine"></div>
+                <img src="images/10th.png" alt="Book 10 Cover" />
+              </div>
+              <div class="book-title">Book 10 Title</div>
+              <button
+                class="read-btn"
+                onclick="openModal('1st-Index.docx.pdf')"
+                aria-label="Read sample of Book 1"
+              >
+                Read Sample
+              </button>
+            </div>
+
+            <div class="book-item">
+              <div
+                class="book-cover"
+                tabindex="0"
+                role="button"
+                onclick="openModal('2nd index.docx.pdf')"
+                onkeydown="handleKeyPress(event, '2nd index.docx.pdf')"
+              >
+                <div class="book-spine"></div>
+                <img src="images/9thbook.png" alt="Book 9 Cover" />
+              </div>
+              <div class="book-title">Book 9 Title</div>
+              <button
+                class="read-btn"
+                onclick="openModal('2nd index.docx.pdf')"
+                aria-label="Read sample of Book 2"
+              >
+                Read Sample
+              </button>
+            </div>
+
+            <div class="book-item">
+              <div
+                class="book-cover"
+                tabindex="0"
+                role="button"
+                onclick="openModal('book3.pdf')"
+                onkeydown="handleKeyPress(event, 'book3.pdf')"
+              >
+                <div class="book-spine"></div>
+                <img src="images/8thbook.png" alt="Book 8 Cover" />
+              </div>
+              <div class="book-title">Book 8 Title</div>
+              <button
+                class="read-btn"
+                onclick="openModal('book3.pdf')"
+                aria-label="Read sample of Book 3"
+              >
+                Read Sample
+              </button>
+            </div>
+
+            <div class="book-item">
+              <div
+                class="book-cover"
+                tabindex="0"
+                role="button"
+                onclick="openModal('book4.pdf')"
+                onkeydown="handleKeyPress(event, 'book4.pdf')"
+              >
+                <div class="book-spine"></div>
+                <img src="images/7thbook.png" alt="Book 7 Cover" />
+              </div>
+              <div class="book-title">Book 7 Title</div>
+              <button
+                class="read-btn"
+                onclick="openModal('book4.pdf')"
+                aria-label="Read sample of Book 4"
+              >
+                Read Sample
+              </button>
+            </div>
+
+            <div class="book-item">
+              <div
+                class="book-cover"
+                tabindex="0"
+                role="button"
+                onclick="openModal('book5.pdf')"
+                onkeydown="handleKeyPress(event, 'book5.pdf')"
+              >
+                <div class="book-spine"></div>
+                <img src="images/6thbook.png" alt="Book 6 Cover" />
+              </div>
+              <div class="book-title">Book 6 Title</div>
+              <button
+                class="read-btn"
+                onclick="openModal('book5.pdf')"
+                aria-label="Read sample of Book 5"
+              >
+                Read Sample
+              </button>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="book-item">
+              <div
+                class="book-cover"
+                tabindex="0"
+                role="button"
+                onclick="openModal('book6.pdf')"
+                onkeydown="handleKeyPress(event, 'book6.pdf')"
+              >
+                <div class="book-spine"></div>
+                <img src="images/5thbook.png" alt="Book 5 Cover" />
+              </div>
+              <div class="book-title">Book 5 Title</div>
+              <button
+                class="read-btn"
+                onclick="openModal('book6.pdf')"
+                aria-label="Read sample of Book 6"
+              >
+                Read Sample
+              </button>
+            </div>
+
+            <div class="book-item">
+              <div
+                class="book-cover"
+                tabindex="0"
+                role="button"
+                onclick="openModal('book7.pdf')"
+                onkeydown="handleKeyPress(event, 'book7.pdf')"
+              >
+                <div class="book-spine"></div>
+                <img src="images/4thbook.png" alt="Book 4 Cover" />
+              </div>
+              <div class="book-title">Book 4 Title</div>
+              <button
+                class="read-btn"
+                onclick="openModal('book7.pdf')"
+                aria-label="Read sample of Book 7"
+              >
+                Read Sample
+              </button>
+            </div>
+
+            <div class="book-item">
+              <div
+                class="book-cover"
+                tabindex="0"
+                role="button"
+                onclick="openModal('book8.pdf')"
+                onkeydown="handleKeyPress(event, 'book8.pdf')"
+              >
+                <div class="book-spine"></div>
+                <img src="images/3rdbook.png" alt="Book 3 Cover" />
+              </div>
+              <div class="book-title">Book 3 Title</div>
+              <button
+                class="read-btn"
+                onclick="openModal('book8.pdf')"
+                aria-label="Read sample of Book 8"
+              >
+                Read Sample
+              </button>
+            </div>
+
+            <div class="book-item">
+              <div
+                class="book-cover"
+                tabindex="0"
+                role="button"
+                onclick="openModal('book9.pdf')"
+                onkeydown="handleKeyPress(event, 'book9.pdf')"
+              >
+                <div class="book-spine"></div>
+                <img src="images/2ndbook.png" alt="Book 2 Cover" />
+              </div>
+              <div class="book-title">Book 2 Title</div>
+              <button
+                class="read-btn"
+                onclick="openModal('book9.pdf')"
+                aria-label="Read sample of Book 9"
+              >
+                Read Sample
+              </button>
+            </div>
+
+            <div class="book-item">
+              <div
+                class="book-cover"
+                tabindex="0"
+                role="button"
+                onclick="openModal('book10.pdf')"
+                onkeydown="handleKeyPress(event, 'book10.pdf')"
+              >
+                <div class="book-spine"></div>
+                <img src="images/1stbook.jpg" alt="Book 1 Cover" />
+              </div>
+              <div class="book-title">Book 1 Title</div>
+              <button
+                class="read-btn"
+                onclick="openModal('book10.pdf')"
+                aria-label="Read sample of Book 10"
+              >
+                Read Sample
+              </button>
+            </div>
+          </div>
+
+          <div class="platform-section">
+            <div class="platform-container">
+              <div class="browser-header">
+                <div class="browser-dots">
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </div>
+              </div>
+
+              <div class="platform-screenshot">
+                <img
+                  src="images/Screenshot 2025-07-22 135450.png"
+                  alt="Platform Screenshot"
+                  onclick="visitPlatform()"
+                  onkeydown="handlePlatformKeyPress(event)"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Click to visit our platform"
+                />
+              </div>
+
+              <button class="visit-platform-btn" onclick="visitPlatform()">
+                Visit Our Platform
+              </button>
+
+              <div class="platform-description">
+                <p>
+                  Web’O Block is a beginner-friendly drag-and-drop platform for
+                  building websites. You can design pages using blocks, just
+                  like arranging puzzle pieces. As you create, you also
+                  understand the core of HTML and CSS. Web’O Block is a
+                  beginner-friendly drag-and-drop platform for building
+                  websites. You can design pages using blocks, just like
+                  arranging puzzle pieces. As you create, you also understand
+                  the core of HTML and CSS.
+                </p>
+              </div>
+            </div>
+
+            <div class="platform-title">Practice Platform</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div
+      id="pdfModal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="modalTitle"
+      aria-modal="true"
+    >
+      <div class="modal-content">
+        <span
+          class="close"
+          onclick="closeModal()"
+          tabindex="0"
+          role="button"
+          aria-label="Close modal"
+          onkeydown="handleCloseKeyPress(event)"
+          >&times;</span
+        >
+        <iframe id="pdfFrame" src="" title="PDF Viewer"></iframe>
+      </div>
+    </div>
+
+    <script>
+      function openModal(pdfFile) {
+        document.getElementById("pdfFrame").src = pdfFile;
+        document.getElementById("pdfModal").style.display = "block";
+        document.body.style.overflow = "hidden"; // Prevent background scrolling
+
+        // Focus management for accessibility
+        const modal = document.getElementById("pdfModal");
+        const closeBtn = modal.querySelector(".close");
+        closeBtn.focus();
+      }
+
+      function closeModal() {
+        document.getElementById("pdfModal").style.display = "none";
+        document.getElementById("pdfFrame").src = "";
+        document.body.style.overflow = "auto"; // Restore scrolling
+      }
+
+      function handleKeyPress(event, pdfFile) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openModal(pdfFile);
+        }
+      }
+
+      function visitPlatform() {
+        // Replace 'YOUR_PLATFORM_URL' with your actual platform URL
+        window.open("https://your-platform-url.com", "_blank");
+      }
+
+      function handlePlatformKeyPress(event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          visitPlatform();
+        }
+      }
+
+      function handleCloseKeyPress(event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          closeModal();
+        }
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("pdfModal");
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          const modal = document.getElementById("pdfModal");
+          if (modal.style.display === "block") {
+            closeModal();
+          }
+        }
+      });
+
+      // Handle orientation change
+      window.addEventListener("orientationchange", function () {
+        setTimeout(function () {
+          // Force a repaint after orientation change
+          document.body.style.display = "none";
+          document.body.offsetHeight; // Trigger reflow
+          document.body.style.display = "";
+        }, 100);
+      });
+    </script>
+
+    <footer>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <div class="footer-container">
+        <div class="footer-left">
+          <img src="images/logo-v3-cut-275x116.png" alt="TinkerQubits Logo" />
+          <div class="footer-social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-center">
+          <h3><strong>TinkerQubits Foundation</strong></h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> TinkerQubits Foundation, 7/2,
+            Assisi Nagar, P.L Lokhande Marg, Chembur(W), Mumbai - 400089
+          </p>
+          <p><i class="fas fa-phone"></i> +91 98190 44922 | +91 8624 995979</p>
+          <p>
+            <i class="fas fa-envelope"></i> rinsa@tinkerqubits.org |
+            info@tinkerqubits.org
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2024 TinkerQubits Foundation. All Rights Reserved.
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const navMenu = document.getElementById("nav-menu");
+        navMenu.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

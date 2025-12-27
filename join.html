@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join Our Team</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: white;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Full-screen pattern layer */
+      .background-pattern {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.35;
+      }
+
+      .background-pattern svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .partners-section {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 60px auto 0;
+        background: rgba(220, 235, 245, 0.6);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+        padding: 60px 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        background: black;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
+        animation: slideInDown 0.8s ease-out;
+      }
+
+      .header p {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+        animation: fadeIn 1s ease-out 0.3s both;
+      }
+
+      .opportunities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .opportunity-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+        animation: slideInUp 0.8s ease-out;
+      }
+
+      .opportunity-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        border-color: #667eea;
+      }
+
+      .opportunity-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+      }
+
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: white;
+      }
+
+      .opportunity-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .opportunity-card p {
+        color: #666;
+        margin-bottom: 25px;
+        line-height: 1.6;
+      }
+
+      .benefits {
+        margin-bottom: 25px;
+      }
+
+      .benefits h4 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        color: #667eea;
+      }
+
+      .benefits ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .benefits li {
+        padding: 5px 0;
+        color: #666;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .benefits li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: bold;
+      }
+
+      .apply-btn {
+        display: inline-block;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .apply-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .contact-section {
+        text-align: center;
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        margin-top: 40px;
+      }
+
+      .contact-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #666;
+      }
+
+      .contact-item i {
+        font-size: 20px;
+        color: #667eea;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        overflow-y: auto;
+      }
+
+      .modal-content {
+        background: white;
+        margin: 20px auto;
+        padding: 30px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+        animation: slideInDown 0.3s ease-out;
+        max-height: 90vh;
+        overflow-y: auto;
+        /* Custom scrollbar */
+        scrollbar-width: thin;
+        scrollbar-color: #667eea #f1f1f1;
+      }
+
+      /* Webkit scrollbar for Chrome, Safari, Edge */
+      .modal-content::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .modal-content::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      .modal-content::-webkit-scrollbar-thumb {
+        background: #667eea;
+        border-radius: 10px;
+      }
+
+      .modal-content::-webkit-scrollbar-thumb:hover {
+        background: #764ba2;
+      }
+
+      .close {
+        position: sticky;
+        top: 0;
+        right: 0;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        z-index: 10;
+        background: white;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+
+      .close:hover {
+        color: #667eea;
+        background: #f8f9fa;
+      }
+
+      .modal-header {
+        margin-bottom: 25px;
+        clear: both;
+      }
+
+      .modal-header h2 {
+        color: #333;
+        font-size: 1.8rem;
+        margin: 0;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #333;
+        font-size: 0.9rem;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .submit-btn {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .floating-whatsapp {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+      }
+
+      .floating-whatsapp:hover {
+        transform: scale(1.1);
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      @keyframes slideInDown {
+        from {
+          transform: translateY(-30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .navbar {
+        background-color: white;
+        padding: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        height: 60px;
+        position: relative;
+      }
+
+      .logo img {
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 26px;
+        color: #333;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-link {
+        display: block;
+        color: black;
+        text-decoration: none;
+        padding: 15px 20px;
+        font-size: 16px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      /* Mobile Styles */
+      @media (max-width: 768px) {
+        .nav-container {
+          flex-wrap: wrap;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-menu {
+          flex-direction: column;
+          background: white;
+          width: 100%;
+          display: none;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          z-index: 999;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-menu.active {
+          display: flex;
+        }
+
+        .nav-item {
+          width: 100%;
+        }
+
+        .nav-link {
+          padding: 15px 20px;
+          width: 100%;
+        }
+
+        .nav-link:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .container {
+          padding: 30px 20px;
+        }
+
+        .header h1 {
+          font-size: 2rem;
+        }
+
+        .opportunities-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .modal-content {
+          margin: 10px auto;
+          padding: 20px;
+          width: 95%;
+          max-height: 95vh;
+        }
+
+        .modal-header h2 {
+          font-size: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+          padding: 10px;
+          font-size: 0.9rem;
+        }
+
+        .form-group textarea {
+          min-height: 70px;
+        }
+      }
+      footer {
+        background-color: #312e81;
+        color: #ffffff;
+        padding: 40px 60px;
+        margin-top: 60px;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: flex-end;
+        gap: 30px;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+
+      .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #ccc;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 60px;
+      }
+
+      .footer-left {
+        flex: 1;
+        min-width: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-left img {
+        max-width: 180px;
+        margin-bottom: 20px;
+      }
+
+      .footer-social-icons {
+        display: flex;
+        gap: 20px;
+      }
+
+      .footer-social-icons a {
+        color: #00ff88;
+        font-size: 20px;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-social-icons a:hover {
+        color: #ffffff;
+      }
+
+      .footer-center {
+        flex: 1;
+        min-width: 280px;
+      }
+
+      .footer-center h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: #ffffff;
+      }
+
+      .footer-center p {
+        margin: 6px 0;
+        color: #ffffff;
+        font-size: 14px;
+      }
+
+      .footer-center i {
+        margin-right: 8px;
+        color: #00ff88;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        font-size: 13px;
+        color: #ffff;
+        border-top: 1px solid #333;
+        margin-top: 30px;
+      }
+
+      /* Tablet adjustments */
+      @media (max-width: 992px) and (min-width: 769px) {
+        .nav-container {
+          padding: 0 15px;
+        }
+
+        .nav-link {
+          padding: 15px 12px;
+          font-size: 14px;
+        }
+      }
+
+      @media (max-height: 600px) {
+        .modal-content {
+          margin: 10px auto;
+          max-height: 95vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <img src="images/logo-v3-cut-275x116.png" alt="TinkerQubits Logo" />
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li class="nav-item">
+            <a href="home.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="pg.html" class="nav-link">Programs</a>
+          </li>
+          <li class="nav-item">
+            <a href="impact.html" class="nav-link">Outreach</a>
+          </li>
+          <li class="nav-item">
+            <a href="journey.html" class="nav-link">Journey</a>
+          </li>
+          <li class="nav-item">
+            <a href="Team-final.html" class="nav-link">Team</a>
+          </li>
+          <li class="nav-item">
+            <a href="gallery.html" class="nav-link">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a href="join.html" class="nav-link">Join Us</a>
+          </li>
+          <li class="nav-item">
+            <a href="testimonial.html" class="nav-link">Testimonials</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="background-pattern">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <defs>
+          <pattern
+            id="techPattern"
+            width="450"
+            height="450"
+            patternUnits="userSpaceOnUse"
+          >
+            <!-- Python Logo -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="2" fill="none">
+              <path
+                d="M50 60 Q50 45 65 45 L90 45 Q105 45 105 60 L105 95 Q105 105 95 105 L75 105"
+              />
+              <path
+                d="M105 110 Q105 125 90 125 L65 125 Q50 125 50 110 L50 75 Q50 65 60 65 L85 65"
+              />
+              <circle cx="60" cy="55" r="3" fill="rgba(74, 111, 165, 0.4)" />
+              <circle cx="95" cy="115" r="3" fill="rgba(74, 111, 165, 0.4)" />
+            </g>
+
+            <!-- HTML Tags <> -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="3" fill="none">
+              <path d="M330 55 L315 70 L330 85" />
+              <path d="M360 55 L375 70 L360 85" />
+            </g>
+
+            <!-- Curly Braces {} -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="3" fill="none">
+              <path
+                d="M220 45 Q210 45 210 55 L210 70 Q210 77 200 77 Q210 77 210 84 L210 99 Q210 109 220 109"
+              />
+              <path
+                d="M250 45 Q260 45 260 55 L260 70 Q260 77 270 77 Q260 77 260 84 L260 99 Q260 109 250 109"
+              />
+            </g>
+
+            <!-- Square Brackets [] -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="3" fill="none">
+              <path d="M170 190 L150 190 L150 235 L170 235" />
+              <path d="M190 190 L210 190 L210 235 L190 235" />
+            </g>
+
+            <!-- Computer/Laptop -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="2.5" fill="none">
+              <rect x="40" y="280" width="80" height="55" rx="5" />
+              <rect x="48" y="288" width="64" height="40" rx="3" />
+              <rect x="55" y="335" width="50" height="6" rx="3" />
+            </g>
+
+            <!-- Book -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="2.5" fill="none">
+              <rect x="310" y="180" width="55" height="70" rx="4" />
+              <line x1="337" y1="180" x2="337" y2="250" />
+              <line x1="320" y1="200" x2="332" y2="200" />
+              <line x1="320" y1="215" x2="332" y2="215" />
+              <line x1="320" y1="230" x2="332" y2="230" />
+            </g>
+
+            <!-- Raspberry Pi Board -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="2.5" fill="none">
+              <rect x="210" y="290" width="80" height="65" rx="4" />
+              <!-- GPIO pins -->
+              <line x1="218" y1="302" x2="280" y2="302" stroke-width="1.5" />
+              <line x1="218" y1="308" x2="280" y2="308" stroke-width="1.5" />
+              <!-- Chips -->
+              <rect x="225" y="322" width="24" height="20" />
+              <rect x="260" y="322" width="16" height="16" />
+              <!-- Ports -->
+              <rect x="218" y="345" width="13" height="8" />
+              <rect x="240" y="345" width="13" height="8" />
+            </g>
+
+            <!-- Electronic Circuit -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="2.5" fill="none">
+              <line x1="330" y1="300" x2="390" y2="300" />
+              <line x1="330" y1="325" x2="390" y2="325" />
+              <!-- Resistor -->
+              <rect x="345" y="293" width="20" height="14" />
+              <!-- LED -->
+              <circle cx="375" cy="300" r="6" />
+              <line x1="370" y1="295" x2="365" y2="290" />
+              <line x1="375" y1="295" x2="370" y2="290" />
+              <!-- Capacitor -->
+              <line x1="355" y1="318" x2="355" y2="332" />
+              <line x1="360" y1="318" x2="360" y2="332" />
+            </g>
+
+            <!-- Web Browser Window -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="2.5" fill="none">
+              <rect x="40" y="180" width="75" height="58" rx="4" />
+              <line x1="40" y1="193" x2="115" y2="193" />
+              <circle
+                cx="48"
+                cy="186.5"
+                r="2.5"
+                fill="rgba(74, 111, 165, 0.4)"
+              />
+              <circle
+                cx="58"
+                cy="186.5"
+                r="2.5"
+                fill="rgba(74, 111, 165, 0.4)"
+              />
+              <circle
+                cx="68"
+                cy="186.5"
+                r="2.5"
+                fill="rgba(74, 111, 165, 0.4)"
+              />
+              <line x1="50" y1="208" x2="100" y2="208" />
+              <line x1="50" y1="220" x2="92" y2="220" />
+            </g>
+
+            <!-- Light Bulb -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="2.5" fill="none">
+              <circle cx="360" cy="400" r="16" />
+              <rect x="350" y="416" width="20" height="13" rx="3" />
+              <line x1="337" y1="390" x2="330" y2="383" />
+              <line x1="383" y1="390" x2="390" y2="383" />
+            </g>
+
+            <!-- Database -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="2.5" fill="none">
+              <ellipse cx="230" cy="400" rx="25" ry="8" />
+              <ellipse cx="230" cy="425" rx="25" ry="8" />
+              <line x1="205" y1="400" x2="205" y2="425" />
+              <line x1="255" y1="400" x2="255" y2="425" />
+            </g>
+
+            <!-- WiFi Signal -->
+            <g stroke="rgba(74, 111, 165, 0.4)" stroke-width="2.5" fill="none">
+              <circle cx="80" cy="420" r="3" fill="rgba(74, 111, 165, 0.4)" />
+              <path d="M63 407 Q72 402 80 407" />
+              <path d="M55 395 Q72 387 89 395" />
+              <path d="M47 383 Q72 372 97 383" />
+            </g>
+
+            <!-- Small decorative dots -->
+            <g fill="rgba(74, 111, 165, 0.3)">
+              <circle cx="160" cy="85" r="3.5" />
+              <circle cx="285" cy="140" r="3.5" />
+              <circle cx="410" cy="90" r="3.5" />
+              <circle cx="145" cy="340" r="3.5" />
+              <circle cx="300" cy="440" r="3.5" />
+              <circle cx="420" cy="240" r="3.5" />
+            </g>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#techPattern)" />
+      </svg>
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <h1>Join Our Team</h1>
+        <p>
+          Be part of something amazing! We're looking for passionate individuals
+          to help us make a difference in our community.
+        </p>
+      </div>
+
+      <div class="opportunities-grid">
+        <div class="opportunity-card">
+          <div class="card-icon">💼</div>
+          <h3>Open Roles</h3>
+          <p>
+            Join our full-time or part-time team and build your career with us.
+            We offer competitive packages and growth opportunities.
+          </p>
+          <div class="benefits">
+            <h4>What We Offer:</h4>
+            <ul>
+              <li>Competitive salary & benefits</li>
+              <li>Professional development</li>
+              <li>Flexible work environment</li>
+              <li>Meaningful impact</li>
+            </ul>
+          </div>
+          <button class="apply-btn" onclick="openModal('job')">
+            Apply for Position
+          </button>
+        </div>
+
+        <div class="opportunity-card">
+          <div class="card-icon">🎉</div>
+          <h3>Event Volunteers</h3>
+          <p>
+            Help us organize and run amazing events! Perfect for those who love
+            working with people and creating memorable experiences.
+          </p>
+          <div class="benefits">
+            <h4>Volunteer Benefits:</h4>
+            <ul>
+              <li>Flexible scheduling</li>
+              <li>Meet like-minded people</li>
+              <li>Skills development</li>
+              <li>Community recognition</li>
+            </ul>
+          </div>
+          <button class="apply-btn" onclick="openModal('volunteer')">
+            Volunteer Now
+          </button>
+        </div>
+
+        <div class="opportunity-card">
+          <div class="card-icon">🎓</div>
+          <h3>Become a Trainer</h3>
+          <p>
+            Share your expertise and help others learn! We're seeking skilled
+            professionals to join our training team.
+          </p>
+          <div class="benefits">
+            <h4>Trainer Perks:</h4>
+            <ul>
+              <li>Competitive training fees</li>
+              <li>Professional recognition</li>
+              <li>Curriculum support</li>
+              <li>Networking opportunities</li>
+            </ul>
+          </div>
+          <button class="apply-btn" onclick="openModal('trainer')">
+            Join as Trainer
+          </button>
+        </div>
+      </div>
+
+      <div class="contact-section">
+        <h2>Have Questions?</h2>
+        <p>
+          We'd love to hear from you! Reach out to learn more about
+          opportunities.
+        </p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i>📧</i>
+            <span>careers@yourcompany.com</span>
+          </div>
+          <div class="contact-item">
+            <i>📞</i>
+            <span>+1 (555) 123-4567</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/9082861960?text=Hello!%20I%20found%20you%20on%20your%20website"
+      class="floating-whatsapp"
+      target="_blank"
+    >
+      <svg
+        class="whatsapp-icon"
+        viewBox="0 0 24 24"
+        style="width: 32px; height: 32px; fill: white"
+      >
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+        />
+      </svg>
+    </a>
+
+    <!-- Modal for Applications -->
+    <div id="applicationModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-header">
+          <h2 id="modalTitle">Apply Now</h2>
+        </div>
+        <form id="applicationForm">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+
+          <div class="form-group" id="positionGroup">
+            <label for="position">Position of Interest</label>
+            <select id="position" name="position">
+              <option value="">Select a position</option>
+              <option value="manager">Project Manager</option>
+              <option value="developer">Software Developer</option>
+              <option value="designer">UI/UX Designer</option>
+              <option value="marketing">Marketing Specialist</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="availabilityGroup" style="display: none">
+            <label for="availability">Availability</label>
+            <select id="availability" name="availability">
+              <option value="">Select availability</option>
+              <option value="weekdays">Weekdays</option>
+              <option value="weekends">Weekends</option>
+              <option value="evenings">Evenings</option>
+              <option value="flexible">Flexible</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="expertiseGroup" style="display: none">
+            <label for="expertise">Area of Expertise</label>
+            <select id="expertise" name="expertise">
+              <option value="">Select expertise</option>
+              <option value="technology">Technology</option>
+              <option value="business">Business</option>
+              <option value="design">Design</option>
+              <option value="marketing">Marketing</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="experience">Experience/Background</label>
+            <textarea
+              id="experience"
+              name="experience"
+              placeholder="Tell us about your relevant experience..."
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="motivation">Why do you want to join us?</label>
+            <textarea
+              id="motivation"
+              name="motivation"
+              placeholder="What motivates you to be part of our team?"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Application</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      let currentApplicationType = "";
+
+      function openModal(type) {
+        currentApplicationType = type;
+        const modal = document.getElementById("applicationModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const positionGroup = document.getElementById("positionGroup");
+        const availabilityGroup = document.getElementById("availabilityGroup");
+        const expertiseGroup = document.getElementById("expertiseGroup");
+
+        // Reset form
+        document.getElementById("applicationForm").reset();
+
+        // Configure modal based on type
+        if (type === "job") {
+          modalTitle.textContent = "Apply for Position";
+          positionGroup.style.display = "block";
+          availabilityGroup.style.display = "none";
+          expertiseGroup.style.display = "none";
+        } else if (type === "volunteer") {
+          modalTitle.textContent = "Volunteer Application";
+          positionGroup.style.display = "none";
+          availabilityGroup.style.display = "block";
+          expertiseGroup.style.display = "none";
+        } else if (type === "trainer") {
+          modalTitle.textContent = "Trainer Application";
+          positionGroup.style.display = "none";
+          availabilityGroup.style.display = "block";
+          expertiseGroup.style.display = "block";
+        }
+
+        modal.style.display = "block";
+        // Prevent body scroll when modal is open
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        document.getElementById("applicationModal").style.display = "none";
+        // Restore body scroll
+        document.body.style.overflow = "auto";
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("applicationModal");
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+
+      // Handle form submission
+      document
+        .getElementById("applicationForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form data
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData.entries());
+          data.applicationType = currentApplicationType;
+
+          // Simulate form submission
+          alert(
+            "Thank you for your application! We will review it and get back to you soon."
+          );
+          closeModal();
+
+          // In a real application, you would send this data to your server
+          console.log("Application submitted:", data);
+        });
+
+      // Add animation delays to cards
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".opportunity-card");
+        cards.forEach((card, index) => {
+          card.style.animationDelay = `${index * 0.2}s`;
+        });
+      });
+
+      // Add some interactive effects
+      document.querySelectorAll(".apply-btn").forEach((btn) => {
+        btn.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-2px) scale(1.02)";
+        });
+
+        btn.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0) scale(1)";
+        });
+      });
+
+      function toggleMenu() {
+        const navMenu = document.getElementById("nav-menu");
+        navMenu.classList.toggle("active");
+      }
+
+      // Close menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const navbar = document.querySelector(".navbar");
+        const navMenu = document.getElementById("nav-menu");
+
+        if (!navbar.contains(event.target)) {
+          navMenu.classList.remove("active");
+        }
+      });
+
+      // Handle window resize
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 768) {
+          const navMenu = document.getElementById("nav-menu");
+          navMenu.classList.remove("active");
+        }
+      });
+    </script>
+
+    <footer>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <div class="footer-container">
+        <div class="footer-left">
+          <img src="images/logo-v3-cut-275x116.png" alt="TinkerQubits Logo" />
+          <div class="footer-social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-center">
+          <h3><strong>TinkerQubits Foundation</strong></h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> TinkerQubits Foundation, 7/2,
+            Assisi Nagar, P.L Lokhande Marg, Chembur(W), Mumbai - 400089
+          </p>
+          <p><i class="fas fa-phone"></i> +91 98190 44922 | +91 8624 995979</p>
+          <p>
+            <i class="fas fa-envelope"></i> rinsa@tinkerqubits.org |
+            info@tinkerqubits.org
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2024 TinkerQubits Foundation. All Rights Reserved.
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const navMenu = document.getElementById("nav-menu");
+        navMenu.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

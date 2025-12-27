@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thinker Makers Mela</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Inter, system-ui, -apple-system, sans-serif;
+        background: white;
+        color: #1a202c;
+        overflow-x: hidden;
+      }
+
+      /* SVG BACKGROUND */
+      .background-pattern {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.4;
+        pointer-events: none;
+      }
+      .background-pattern svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 55vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 100px 20px 60px;
+        position: relative;
+      }
+      .hero h1 {
+        font-size: 4.5rem;
+        font-weight: 900;
+        color: black;
+        margin-bottom: 20px;
+        letter-spacing: -2px;
+      }
+      .hero p {
+        font-size: 1.4rem;
+        color: #475569;
+        font-weight: 500;
+        max-width: 600px;
+        line-height: 1.6;
+      }
+
+      /* YEAR CARDS */
+      .year-section {
+        max-width: 1400px;
+        margin: auto;
+        padding: 40px 40px 80px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 35px;
+      }
+      .year-card {
+        background: rgba(220, 235, 245, 0.6);
+        border-radius: 20px;
+        padding: 0;
+        text-align: left;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .year-card-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        color: black;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        z-index: 2;
+      }
+
+      .year-card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .year-card-content {
+        padding: 30px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .year-card-content h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: black;
+        margin-bottom: 12px;
+        letter-spacing: -0.5px;
+      }
+
+      .year-card-content p {
+        color: #475569;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        flex: 1;
+      }
+
+      .year-card-stats {
+        display: flex;
+        gap: 25px;
+        margin-bottom: 20px;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: black;
+        display: block;
+        line-height: 1;
+        margin-bottom: 5px;
+      }
+
+      .stat-label {
+        font-size: 0.85rem;
+        color: #64748b;
+        font-weight: 600;
+      }
+
+      .year-card-arrow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: black;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: gap 0.3s ease;
+      }
+
+      .year-card-arrow svg {
+        width: 20px;
+        height: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .year-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        border-color: rgba(0, 0, 0, 0.3);
+      }
+
+      .year-card:hover .year-card-arrow {
+        gap: 12px;
+      }
+
+      .year-card:hover .year-card-arrow svg {
+        transform: translateX(5px);
+      }
+
+      /* PROJECT LIST */
+      .projects-section,
+      .project-detail {
+        display: none;
+        max-width: 1300px;
+        margin: auto;
+        padding: 60px 40px;
+        animation: fadeIn 0.6s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .active {
+        display: block;
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 25px;
+        left: 25px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: rgb(22, 21, 21);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        z-index: 100;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+      .back-btn:hover {
+        background: rgba(220, 235, 245, 0.6);
+        transform: translateX(-5px);
+        border-color: rgba(0, 0, 0, 0.4);
+      }
+
+      #projectsTitle {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: black;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+      }
+
+      .project-card {
+        background: rgba(220, 235, 245, 0.6);
+        border-radius: 20px;
+        padding: 0;
+        text-align: left;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.4s ease;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        color: black;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        z-index: 2;
+      }
+
+      .project-card-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .project-card-content {
+        padding: 25px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-card-content h3 {
+        margin-bottom: 8px;
+        color: black;
+        font-weight: 800;
+        font-size: 1.15rem;
+        letter-spacing: -0.3px;
+      }
+
+      .project-card-content p {
+        color: #1e293b;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1.5;
+        flex: 1;
+      }
+
+      .project-card-arrow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: black;
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin-top: 15px;
+        transition: gap 0.3s ease;
+      }
+
+      .project-card-arrow svg {
+        width: 18px;
+        height: 18px;
+        transition: transform 0.3s ease;
+      }
+
+      .project-card:hover .project-card-arrow {
+        gap: 12px;
+      }
+
+      .project-card:hover .project-card-arrow svg {
+        transform: translateX(5px);
+      }
+
+      /* PROJECT DETAIL */
+      .detail-box {
+        background: rgba(220, 235, 245, 0.6);
+        border-radius: 32px;
+        padding: 50px;
+        box-shadow: 0 25px 70px rgba(37, 99, 235, 0.2),
+          0 0 0 1px rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .detail-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .detail-image {
+        background: white;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .detail-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        display: block;
+      }
+
+      .detail-info {
+        background: white;
+        border-radius: 20px;
+        padding: 35px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .detail-info h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        font-weight: 900;
+        color: #000000;
+        letter-spacing: -1px;
+      }
+
+      .detail-section {
+        margin-bottom: 25px;
+      }
+
+      .detail-section h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .detail-section p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: #000000;
+        font-weight: 500;
+      }
+
+      .detail-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .detail-section ul li {
+        padding: 8px 0;
+        padding-left: 25px;
+        position: relative;
+        color: #000000;
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+
+      .detail-section ul li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: black;
+      font-weight: bold;
+}
+
+      .detail-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .tag {
+        background: rgba(0, 0, 0, 0.08);
+        color: #000000;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 900px) {
+        .detail-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        .year-section {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .hero h1 {
+          font-size: 3.5rem;
+        }
+      }
+      @media (max-width: 600px) {
+        .year-section {
+          grid-template-columns: 1fr;
+          gap: 25px;
+          padding: 20px 20px 60px;
+        }
+        .year-card-content h2 {
+          font-size: 1.5rem;
+        }
+        .year-card-stats {
+          gap: 15px;
+        }
+        .stat-number {
+          font-size: 1.5rem;
+        }
+        .hero {
+          padding: 60px 20px 40px;
+        }
+        .hero h1 {
+          font-size: 2.5rem;
+          letter-spacing: -1px;
+        }
+        .hero p {
+          font-size: 1.1rem;
+        }
+        .projects-section,
+        .project-detail {
+          padding: 40px 20px;
+        }
+        .detail-box {
+          padding: 40px 25px;
+        }
+      }
+      .hero-btn{
+        position: fixed;
+        top: 25px;
+        left: 25px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: rgb(22, 21, 21);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        z-index: 100;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- SVG BACKGROUND -->
+    <div class="background-pattern">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern
+            id="techPattern"
+            width="450"
+            height="450"
+            patternUnits="userSpaceOnUse"
+          >
+            <!-- Python Logo -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2" fill="none">
+              <path
+                d="M50 60 Q50 45 65 45 L90 45 Q105 45 105 60 L105 95 Q105 105 95 105 L75 105"
+              />
+              <path
+                d="M105 110 Q105 125 90 125 L65 125 Q50 125 50 110 L50 75 Q50 65 60 65 L85 65"
+              />
+              <circle cx="60" cy="55" r="3" fill="rgba(59, 130, 246, 0.4)" />
+              <circle cx="95" cy="115" r="3" fill="rgba(59, 130, 246, 0.4)" />
+            </g>
+
+            <!-- HTML Tags -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="3" fill="none">
+              <path d="M330 55 L315 70 L330 85" />
+              <path d="M360 55 L375 70 L360 85" />
+            </g>
+
+            <!-- Curly Braces -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="3" fill="none">
+              <path
+                d="M220 45 Q210 45 210 55 L210 70 Q210 77 200 77 Q210 77 210 84 L210 99 Q210 109 220 109"
+              />
+              <path
+                d="M250 45 Q260 45 260 55 L260 70 Q260 77 270 77 Q260 77 260 84 L260 99 Q260 109 250 109"
+              />
+            </g>
+
+            <!-- Square Brackets -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="3" fill="none">
+              <path d="M170 190 L150 190 L150 235 L170 235" />
+              <path d="M190 190 L210 190 L210 235 L190 235" />
+            </g>
+
+            <!-- Computer/Laptop -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2.5" fill="none">
+              <rect x="40" y="280" width="80" height="55" rx="5" />
+              <rect x="48" y="288" width="64" height="40" rx="3" />
+              <rect x="55" y="335" width="50" height="6" rx="3" />
+            </g>
+
+            <!-- Book -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2.5" fill="none">
+              <rect x="310" y="180" width="55" height="70" rx="4" />
+              <line x1="337" y1="180" x2="337" y2="250" />
+              <line x1="320" y1="200" x2="332" y2="200" />
+              <line x1="320" y1="215" x2="332" y2="215" />
+              <line x1="320" y1="230" x2="332" y2="230" />
+            </g>
+
+            <!-- Raspberry Pi Board -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2.5" fill="none">
+              <rect x="210" y="290" width="80" height="65" rx="4" />
+              <line x1="218" y1="302" x2="280" y2="302" stroke-width="1.5" />
+              <line x1="218" y1="308" x2="280" y2="308" stroke-width="1.5" />
+              <rect x="225" y="322" width="24" height="20" />
+              <rect x="260" y="322" width="16" height="16" />
+              <rect x="218" y="345" width="13" height="8" />
+              <rect x="240" y="345" width="13" height="8" />
+            </g>
+
+            <!-- Electronic Circuit -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2.5" fill="none">
+              <line x1="330" y1="300" x2="390" y2="300" />
+              <line x1="330" y1="325" x2="390" y2="325" />
+              <rect x="345" y="293" width="20" height="14" />
+              <circle cx="375" cy="300" r="6" />
+              <line x1="370" y1="295" x2="365" y2="290" />
+              <line x1="375" y1="295" x2="370" y2="290" />
+              <line x1="355" y1="318" x2="355" y2="332" />
+              <line x1="360" y1="318" x2="360" y2="332" />
+            </g>
+
+            <!-- Web Browser -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2.5" fill="none">
+              <rect x="40" y="180" width="75" height="58" rx="4" />
+              <line x1="40" y1="193" x2="115" y2="193" />
+              <circle
+                cx="48"
+                cy="186.5"
+                r="2.5"
+                fill="rgba(59, 130, 246, 0.4)"
+              />
+              <circle
+                cx="58"
+                cy="186.5"
+                r="2.5"
+                fill="rgba(59, 130, 246, 0.4)"
+              />
+              <circle
+                cx="68"
+                cy="186.5"
+                r="2.5"
+                fill="rgba(59, 130, 246, 0.4)"
+              />
+              <line x1="50" y1="208" x2="100" y2="208" />
+              <line x1="50" y1="220" x2="92" y2="220" />
+            </g>
+
+            <!-- Light Bulb -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2.5" fill="none">
+              <circle cx="360" cy="400" r="16" />
+              <rect x="350" y="416" width="20" height="13" rx="3" />
+              <line x1="337" y1="390" x2="330" y2="383" />
+              <line x1="383" y1="390" x2="390" y2="383" />
+            </g>
+
+            <!-- Database -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2.5" fill="none">
+              <ellipse cx="230" cy="400" rx="25" ry="8" />
+              <ellipse cx="230" cy="425" rx="25" ry="8" />
+              <line x1="205" y1="400" x2="205" y2="425" />
+              <line x1="255" y1="400" x2="255" y2="425" />
+            </g>
+
+            <!-- WiFi Signal -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2.5" fill="none">
+              <circle cx="80" cy="420" r="3" fill="rgba(59, 130, 246, 0.4)" />
+              <path d="M63 407 Q72 402 80 407" />
+              <path d="M55 395 Q72 387 89 395" />
+              <path d="M47 383 Q72 372 97 383" />
+            </g>
+
+            <!-- Robot -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2.5" fill="none">
+              <rect x="140" y="400" width="45" height="35" rx="5" />
+              <circle cx="152" cy="412" r="4" fill="rgba(59, 130, 246, 0.4)" />
+              <circle cx="173" cy="412" r="4" fill="rgba(59, 130, 246, 0.4)" />
+              <line x1="152" y1="427" x2="173" y2="427" stroke-width="2" />
+              <line x1="162" y1="390" x2="162" y2="400" stroke-width="2" />
+              <circle cx="162" cy="387" r="3" fill="rgba(59, 130, 246, 0.4)" />
+            </g>
+
+            <!-- Gear/Settings -->
+            <g stroke="rgba(59, 130, 246, 0.4)" stroke-width="2.5" fill="none">
+              <circle cx="400" cy="180" r="15" />
+              <circle cx="400" cy="180" r="8" />
+              <rect x="398" y="158" width="4" height="8" />
+              <rect x="398" y="194" width="4" height="8" />
+              <rect x="418" y="178" width="8" height="4" />
+              <rect x="382" y="178" width="8" height="4" />
+            </g>
+
+            <!-- Decorative dots -->
+            <g fill="rgba(59, 130, 246, 0.35)">
+              <circle cx="160" cy="85" r="4" />
+              <circle cx="285" cy="140" r="4" />
+              <circle cx="410" cy="90" r="4" />
+              <circle cx="145" cy="340" r="4" />
+              <circle cx="300" cy="440" r="4" />
+              <circle cx="420" cy="240" r="4" />
+              <circle cx="90" cy="150" r="3.5" />
+              <circle cx="370" cy="320" r="3.5" />
+            </g>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#techPattern)" />
+      </svg>
+    </div>
+
+    <!-- HERO -->
+     <section class="hero" id="heroSection">
+      <h1>Thinker Makers Mela</h1>
+      <p>
+        Celebrating creativity, innovation & young talent through groundbreaking
+        projects
+      </p>
+      <a href="pg.html" class="hero-btn">Back to Programs</a>
+    </section>
+
+    <!-- YEARS -->
+    <section class="year-section" id="yearSection">
+      <div class="year-card" onclick="openProjects(2022)">
+        <span class="year-card-badge">Annual Event</span>
+        <img
+          src=""
+          alt="TMM 2021"
+          class="year-card-image"
+        />
+        <div class="year-card-content">
+          <h2>TMM 2022</h2>
+          <p>
+            Inaugural edition showcasing innovative IoT and robotics projects
+            from young makers.
+          </p>
+          <div class="year-card-stats">
+            <div class="stat-item">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">35+</span>
+              <span class="stat-label">Participants</span>
+            </div>
+          </div>
+          <div class="year-card-arrow">
+            View Projects
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-card" onclick="openProjects(2023)">
+        <span class="year-card-badge">Annual Event</span>
+        <img
+          src=""
+          alt="TMM 2022"
+          class="year-card-image"
+        />
+        <div class="year-card-content">
+          <h2>TMM 2023</h2>
+          <p>
+            Second edition featuring AI and advanced robotics innovations from
+            talented students.
+          </p>
+          <div class="year-card-stats">
+            <div class="stat-item">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">40+</span>
+              <span class="stat-label">Participants</span>
+            </div>
+          </div>
+          <div class="year-card-arrow">
+            View Projects
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-card" onclick="openProjects(2024)">
+        <span class="year-card-badge">Annual Event</span>
+        <img
+          src=""
+          alt="TMM 2023"
+          class="year-card-image"
+        />
+        <div class="year-card-content">
+          <h2>TMM 2024</h2>
+          <p>
+            Expanded edition with AR technology and autonomous systems from
+            creative minds.
+          </p>
+          <div class="year-card-stats">
+            <div class="stat-item">
+              <span class="stat-number">17+</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Participants</span>
+            </div>
+          </div>
+          <div class="year-card-arrow">
+            View Projects
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-card" onclick="openProjects(2025)">
+        <span class="year-card-badge">Annual Event</span>
+        <img
+          src=""
+          alt="TMM 2024"
+          class="year-card-image"
+        />
+        <div class="year-card-content">
+          <h2>TMM 2025</h2>
+          <p>
+            Latest edition highlighting cutting-edge BCI and environmental tech
+            solutions.
+          </p>
+          <div class="year-card-stats">
+            <div class="stat-item">
+              <span class="stat-number">20+</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">70+</span>
+              <span class="stat-label">Participants</span>
+            </div>
+          </div>
+          <div class="year-card-arrow">
+            View Projects
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT LIST -->
+    <section class="projects-section" id="projectsSection">
+      <span class="back-btn" onclick="backToYears()">← Back</span>
+      <h2 id="projectsTitle"></h2>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </section>
+
+    <!-- PROJECT DETAIL -->
+    <section class="project-detail" id="projectDetail">
+      <span class="back-btn" onclick="backToProjects()"
+        >← Back</span
+      >
+      <div class="detail-box">
+        <div class="detail-content">
+          <div class="detail-image">
+            <img id="detailImage" src="" alt="Project Image" />
+          </div>
+          <div class="detail-info">
+            <h2 id="detailTitle"></h2>
+
+            <div class="detail-section">
+              <h3>📝 Description</h3>
+              <p id="detailDesc"></p>
+            </div>
+
+            <div class="detail-section">
+              <h3>🎯 Key Features</h3>
+              <ul id="detailFeatures"></ul>
+            </div>
+
+            <div class="detail-section">
+              <h3>🔧 Technologies Used</h3>
+              <div class="detail-tags" id="detailTech"></div>
+            </div>
+
+            <div class="detail-section">
+           <h3>👥 Team Members</h3>
+           <ul id="detailTeam"></ul>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const data = {
+        2022: [
+          {
+            title: "Smart Home",
+            desc: "IoT based home automation using sensors, relays and mobile app control.",
+            image:
+              "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&auto=format&fit=crop",
+            features: [
+              "Voice control integration with Alexa and Google Home",
+              "Real-time sensor monitoring via mobile app",
+              "Automated lighting and temperature control",
+              "Energy consumption tracking and analytics",
+            ],
+            tech: ["Arduino", "ESP8266", "MQTT", "Firebase", "Android"],
+            team: "Rahul Sharma, Priya Patel, Amit Kumar",
+          },
+          {
+            title: "Line Follower Robot",
+            desc: "Autonomous robot following a path using IR sensors and microcontroller.",
+            image:
+              "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=800&auto=format&fit=crop",
+            features: [
+              "PID control algorithm for smooth navigation",
+              "Multiple IR sensor array for accurate path detection",
+              "Obstacle detection and avoidance",
+              "Speed optimization on straight paths",
+            ],
+            tech: ["Arduino Uno", "IR Sensors", "Motor Driver", "C++"],
+            team: "Sneha Reddy, Vikram Singh, Anjali Desai",
+          },
+        ],
+        2023: [
+          {
+            title: "AI Chatbot",
+            desc: "NLP based chatbot for answering user queries intelligently.",
+            image:
+              "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&auto=format&fit=crop",
+            features: [
+              "Natural language understanding with 95% accuracy",
+              "Context-aware conversations",
+              "Multi-language support (English, Hindi, Marathi)",
+              "Integration with knowledge base and FAQ system",
+            ],
+            tech: ["Python", "TensorFlow", "NLTK", "Flask", "React"],
+            team: "Arjun Mehta, Kavya Nair, Rohan Joshi",
+          },
+          {
+            title: "Robotic Arm",
+            desc: "Multi-axis robotic arm controlled via joystick and microcontroller.",
+            image:
+              "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop",
+            features: [
+              "5 degrees of freedom for precise movement",
+              "Gripper with force feedback",
+              "Joystick and computer vision control modes",
+              "Pick and place automation with 0.5mm precision",
+            ],
+            tech: ["Arduino Mega", "Servo Motors", "Python", "OpenCV"],
+            team: "Neha Gupta, Siddharth Rao, Divya Shah",
+          },
+        ],
+        2024: [
+          {
+            title: "AR Learning App",
+            desc: "Augmented reality based learning application for students.",
+            image:
+              "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=800&auto=format&fit=crop",
+            features: [
+              "3D visualization of complex scientific concepts",
+              "Interactive AR models for biology, chemistry, and physics",
+              "Gamified learning with progress tracking",
+              "Multi-user collaborative learning sessions",
+            ],
+            tech: ["Unity", "ARCore", "Vuforia", "C#", "Firebase"],
+            team: "Aditya Verma, Riya Kapoor, Karan Malhotra",
+          },
+          {
+            title: "Delivery Robot",
+            desc: "Autonomous robot for item delivery using obstacle avoidance.",
+            image:
+              "https://images.unsplash.com/photo-1563207153-f403bf289096?w=800&auto=format&fit=crop",
+            features: [
+              "LIDAR-based mapping and navigation",
+              "Real-time obstacle detection and path planning",
+              "Secure compartment with electronic locking",
+              "GPS tracking and delivery confirmation system",
+            ],
+            tech: ["Raspberry Pi", "ROS", "LIDAR", "Python", "GPS Module"],
+            team: "Ishaan Bose, Tanvi Iyer, Harsh Agarwal",
+          },
+        ],
+        2025: [
+          {
+            title: "Girls Safety Band",
+            desc: "EEG based system to control devices using brain signals.",
+            image:
+              "",
+            features: [
+              "Non-invasive EEG headset with 8 channels",
+              "Real-time brain signal processing and classification",
+              "Control smart home devices with thought patterns",
+              "Machine learning model trained for individual users",
+            ],
+            tech: [
+              "EEG Headset",
+              "Python",
+              "TensorFlow",
+              "Signal Processing",
+              "IoT",
+            ],
+            team: "Varun Khanna, Ananya Pillai, Sameer Khan",
+          },
+          {
+            title: "CyberStorm",
+            desc: "Autonomous robot for collecting plastic waste from water bodies.",
+            image:
+              "",
+            features: [
+              "Computer vision for plastic waste detection",
+              "Waterproof design with solar power backup",
+              "GPS waypoint navigation for systematic coverage",
+              "Waste capacity of 50kg with automatic compaction",
+            ],
+            tech: [
+              "Raspberry Pi",
+              "Computer Vision",
+              "Solar Panel",
+              "GPS",
+              "Waterproof Motors",
+            ],
+            team: "Meera Deshmukh, Aryan Chatterjee, Pooja Menon",
+          },
+        ],
+      };
+
+      let currentYear = null;
+
+      function openProjects(year) {
+        currentYear = year;
+        heroSection.style.display = "none";
+        yearSection.style.display = "none";
+        projectsSection.classList.add("active");
+        projectsTitle.innerText = `TMM ${year} Projects`;
+        projectsGrid.innerHTML = "";
+        data[year].forEach((p, i) => {
+          projectsGrid.innerHTML += `
+<div class="project-card" onclick="openDetail(${i})">
+  <span class="project-card-badge">Project ${i + 1}</span>
+  <img src="${p.image}" alt="${p.title}" class="project-card-image">
+  <div class="project-card-content">
+    <h3>${p.title}</h3>
+    <p>${p.desc}</p>
+    <div class="project-card-arrow">
+      View Details
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
+    </div>
+  </div>
+</div>`;
+        });
+      }
+
+      function openDetail(index) {
+        heroSection.style.display = "none";
+        projectsSection.classList.remove("active");
+        projectDetail.classList.add("active");
+
+        const project = data[currentYear][index];
+
+        detailTitle.innerText = project.title;
+        detailDesc.innerText = project.desc;
+        detailImage.src = project.image;
+        detailImage.alt = project.title;
+
+        // Populate features
+        detailFeatures.innerHTML = project.features
+          .map((feature) => `<li>${feature}</li>`)
+          .join("");
+
+        // Populate technologies
+        detailTech.innerHTML = project.tech
+          .map((tech) => `<span class="tag">${tech}</span>`)
+          .join("");
+
+        // Populate team members
+        const teamMembers = project.team.split(', ');
+        detailTeam.innerHTML = teamMembers
+      .map((member) => `<li>${member}</li>`)
+      .join("");
+      }
+
+      function backToProjects() {
+        heroSection.style.display = "none";
+        projectDetail.classList.remove("active");
+        projectsSection.classList.add("active");
+      }
+
+      function backToYears() {
+        heroSection.style.display = "flex";
+        projectsSection.classList.remove("active");
+        yearSection.style.display = "grid";
+      }
+    </script>
+  </body>
+</html>
