@@ -211,14 +211,10 @@
       }
 
       .header h1 {
-        font-size: 4rem;
-        font-weight: 700;
-        background:black;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 20px;
-        animation: slideInDown 0.8s ease-out;
+        font-size: 2rem;
+        padding: 10px;
+       color: #2c3e50;
+        
       }
 
       .header p {
@@ -230,13 +226,18 @@
       .content {
         padding: 40px;
         background: #f8f9fa;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        align-items: flex-start;
       }
 
       .map-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 40px;
+        flex: 1;
+        margin-bottom: 0;
       }
 
       .india-map {
@@ -289,9 +290,11 @@
 
       .stats-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: 1fr;
         gap: 30px;
-        margin-top: 40px;
+        margin-top: 0;
+        flex: 1;
+        min-width: 300px;
       }
 
       .stat-card {
@@ -335,6 +338,10 @@
         .header p {
           font-size: 1em;
         }
+        .content {
+          flex-direction: column;
+          padding: 20px;
+        }
         .stats-grid {
           grid-template-columns: 1fr;
         }
@@ -342,7 +349,7 @@
           font-size: 2.5em;
         }
         .india-map {
-          width: 250px;
+          width: 300px;
           height: 300px;
         }
       }
@@ -774,6 +781,17 @@
       </div>
 
     <div class="map">
+        <!-- Indicator for active programs and future plans -->
+    <div class="map-indicator">
+      <div class="indicator-item">
+        <div class="color-box active-program"></div>
+        <span>Active Program</span>
+      </div>
+      <div class="indicator-item">
+        <div class="color-box future-plan"></div>
+        <span>Future Plan</span>
+      </div>
+    </div>
       <svg
         version="1.1"
         id="Livello_1"
@@ -1054,31 +1072,22 @@
           />
         </g>
       </svg>
+      
     </div>
 
-  <!-- Indicator for active programs and future plans -->
-  <div class="map-indicator">
-    <div class="indicator-item">
-      <div class="color-box active-program"></div>
-      <span>Active Program</span>
-    </div>
-    <div class="indicator-item">
-      <div class="color-box future-plan"></div>
-      <span>Future Plan</span>
-    </div>
-  </div>
+  
 
         <div class="stats-grid">
           <div class="stat-card">
-            <span class="stat-number">15,000+</span>
+            <span class="stat-number">250+</span>
             <div class="stat-title">Teachers Trained</div>
             <div class="stat-description">
-              Across 16 states and union territories
+              Across 5 states and union territories
             </div>
           </div>
 
           <div class="stat-card">
-            <span class="stat-number">2,500+</span>
+            <span class="stat-number">4+</span>
             <div class="stat-title">Schools Impacted</div>
             <div class="stat-description">
               Rural and urban educational institutions
@@ -1086,7 +1095,7 @@
           </div>
 
           <div class="stat-card">
-            <span class="stat-number">5,00,000+</span>
+            <span class="stat-number">2600+</span>
             <div class="stat-title">Students Benefited</div>
             <div class="stat-description">
               Through improved teaching methods
@@ -1094,7 +1103,7 @@
           </div>
 
           <div class="stat-card">
-            <span class="stat-number">150+</span>
+            <span class="stat-number">6+</span>
             <div class="stat-title">Districts Covered</div>
             <div class="stat-description">
               From urban centers to remote villages
@@ -1109,30 +1118,35 @@
       // Active Programs Data (5 states with active programs)
     const activePrograms = {
         'Maharashtra': {
-            teachers: 456,
-            schools: 134,
+            location:"Mumbai, Pune, Nashik, Latur",
+            teachers: 120,
+            schools: 4,
             status: 'Active Program',
             description: '🟢 Currently running digital literacy and teacher training programs across 134 schools'
         },
         'Gujarat': {
+            location: "Ahmedabad, Surat, Vadodara, Rajkot",
             teachers: 278,
             schools: 89,
             status: 'Active Program',
             description: '🟢 Active vocational training and skill development programs in industrial areas'
         },
         'Karnataka': {
+            location: "Bangalore, Mysore, Hubli, Belgaum",
             teachers: 289,
             schools: 78,
             status: 'Active Program',
             description: '🟢 Running IT education and technology integration programs in tech hubs'
         },
         'Kerala': {
+            location: "Thiruvananthapuram, Kochi, Kozhikode, Thrissur",
             teachers: 156,
             schools: 43,
             status: 'Active Program',
             description: '🟢 Active educational excellence and literacy enhancement programs'
         },
         'Jammu and Kashmir': {
+            location: "Srinagar, Jammu, Anantnag, Baramulla",
             teachers: 134,
             schools: 41,
             status: 'Active Program',
@@ -1142,35 +1156,17 @@
 
     // Future Plans Data (all other states)
     const futurePlans = {
-        'Andaman and Nicobar Islands': { description: '🟡 Planning remote island education connectivity programs for 2025' },
-        'Andhra Pradesh': { description: '🟡 Future digital literacy expansion planned for rural districts' },
-        'Arunachal Pradesh': { description: '🟡 Mountain region education initiatives launching in Q2 2025' },
-        'Assam': { description: '🟡 Tea garden community education programs planned for next phase' },
-        'Bihar': { description: '🟡 Large-scale rural teacher training expansion coming in 2025' },
-        'Chandigarh': { description: '🟡 Urban smart education technology integration planned' },
-        'Chhattisgarh': { description: '🟡 Tribal area education development programs in planning phase' },
-        'Delhi': { description: '🟡 Metropolitan education excellence expansion planned for 2025' },
-        'Goa': { description: '🟡 Coastal education and tourism-focused programs coming soon' },
-        'Haryana': { description: '🟡 Agricultural community education initiatives in development' },
-        'Himachal Pradesh': { description: '🟡 Hill station education and environmental programs planned' },
-        'Jharkhand': { description: '🟡 Mining community education and skill development coming in 2025' },
-        'Lakshadweep': { description: '🟡 Island education connectivity and marine studies programs planned' },
-        'Madhya Pradesh': { description: '🟡 Central India tribal education expansion in planning phase' },
-        'Manipur': { description: '🟡 Northeast border education and cultural programs planned' },
-        'Meghalaya': { description: '🟡 Hill tribe education and heritage preservation initiatives coming' },
-        'Mizoram': { description: '🟡 Community education and cultural development programs planned' },
-        'Nagaland': { description: '🟡 Tribal culture preservation education programs in development' },
-        'Odisha': { description: '🟡 Coastal and tribal education expansion planned for 2025' },
-        'Punjab': { description: '🟡 Agricultural prosperity and modern farming education coming' },
-        'Puducherry': { description: '🟡 Heritage education and bilingual programs in planning phase' },
-        'Rajasthan': { description: '🟡 Desert region education and water conservation programs planned' },
-        'Sikkim': { description: '🟡 Himalayan education and eco-tourism programs coming soon' },
-        'Tamil Nadu': { description: '🟡 Temple heritage and technology education expansion planned' },
-        'Telangana': { description: '🟡 Tech hub innovation and startup education programs in development' },
-        'Tripura': { description: '🟡 Border area education and cultural exchange programs planned' },
-        'Uttar Pradesh': { description: '🟡 Massive state-wide education modernization planned for 2025-26' },
-        'Uttarakhand': { description: '🟡 Himalayan foothills and adventure education programs coming' },
-        'West Bengal': { description: '🟡 Cultural hub education and arts integration programs planned' }
+        'Bihar': { location: "Patna, Gaya, Bhagalpur, Muzaffarpur", description: '🟡 Large-scale rural teacher training expansion coming in 2025' },
+        'Delhi': { location: "New Delhi, Central Delhi, East Delhi, West Delhi", description: '🟡 Metropolitan education excellence expansion planned for 2025' },
+        'Goa': { location: "Panaji, Vasco da Gama, Margao, Mapusa", description: '🟡 Coastal education and tourism-focused programs coming soon' },
+        'Himachal Pradesh': { location: "Shimla, Manali, Dharamshala, Kullu", description: '🟡 Hill station education and environmental programs planned' },
+        'Jharkhand': { location: "Ranchi, Jamshedpur, Dhanbad, Bokaro", description: '🟡 Mining community education and skill development coming in 2025' },
+        'Rajasthan': { location: "Jaipur, Udaipur, Jodhpur, Kota", description: '🟡 Desert region education and water conservation programs planned' },
+        'Tamil Nadu': { location: "Chennai, Coimbatore, Madurai, Tiruchirappalli", description: '🟡 Temple heritage and technology education expansion planned' },
+        'Telangana': { location: "Hyderabad, Warangal, Nizamabad, Karimnagar", description: '🟡 Tech hub innovation and startup education programs in development' },
+        'Uttar Pradesh': { location: "Lucknow, Kanpur, Allahabad, Agra", description: '🟡 Massive state-wide education modernization planned for 2025-26' },
+        'Uttarakhand': { location: "Dehradun, Haridwar, Rishikesh, Nainital", description: '🟡 Himalayan foothills and adventure education programs coming' },
+
     };
 
     // Create tooltip element
@@ -1180,7 +1176,7 @@
         tooltip.style.cssText = `
             position: absolute;
             background: rgba(0, 0, 0, 0.9);
-            color: #2c3e50;
+            color: white;
             padding: 10px;
             border-radius: 5px;
             font-size: 12px;
@@ -1242,6 +1238,7 @@
                     tooltip.innerHTML = `
                         <div style="font-weight: bold; margin-bottom: 5px; color: #2196F3;">${stateName}</div>
                         <div style="font-weight: bold; color: #4CAF50; margin-bottom: 5px;">${activeData.status}</div>
+                        <div>📍 Locations: ${activeData.location}</div>
                         <div>👨‍🏫 ${activeData.teachers} teachers trained</div>
                         <div>🏫 ${activeData.schools} schools impacted</div>
                         <div style="margin-top: 8px; font-style: italic;">${activeData.description}</div>
@@ -1250,6 +1247,7 @@
                     tooltip.innerHTML = `
                         <div style="font-weight: bold; margin-bottom: 5px; color: #FFC107;">${stateName}</div>
                         <div style="font-weight: bold; color: #FF9800; margin-bottom: 5px;">Future Plan</div>
+                        <div>📍 Locations: ${futureData.location}</div>
                         <div style="margin-top: 8px; font-style: italic;">${futureData.description}</div>
                     `;
                 } else {
@@ -1284,9 +1282,9 @@
             // Click event
             path.addEventListener('click', () => {
                 if (activeData) {
-                    alert(`🟢 ACTIVE PROGRAM - ${stateName}\n\n${activeData.status}\n\n👨‍🏫 Teachers Trained: ${activeData.teachers}\n🏫 Schools Impacted: ${activeData.schools}\n\n📍 Details: ${activeData.description}`);
+                    alert(`🟢 ACTIVE PROGRAM - ${stateName}\n\n${activeData.status}\n\n📍 Locations: ${activeData.location}\n\n👨‍🏫 Teachers Trained: ${activeData.teachers}\n🏫 Schools Impacted: ${activeData.schools}\n\n📝 Details: ${activeData.description}`);
                 } else if (futureData) {
-                    alert(`🟡 FUTURE PLAN - ${stateName}\n\n📍 ${futureData.description}`);
+                    alert(`🟡 FUTURE PLAN - ${stateName}\n\n📍 Locations: ${futureData.location}\n\n📝 ${futureData.description}`);
                 } else {
                     alert(`${stateName || 'This region'}\n\n📍 Program planning in progress!`);
                 }
@@ -1365,7 +1363,7 @@
       function toggleMenu() {
         const navMenu = document.getElementById("nav-menu");
         navMenu.classList.toggle("active");
-      }
+      } 
     </script>
   </body>
 </html>
