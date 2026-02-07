@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -373,6 +373,143 @@
         transform: scale(1.1);
       }
 
+      /* No Positions Available Modal */
+      .no-position-modal {
+        background: white;
+        margin: 100px auto;
+        padding: 40px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 450px;
+        position: relative;
+        animation: bounceIn 0.5s ease-out;
+        text-align: center;
+      }
+
+      .no-position-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+      }
+
+      .no-position-modal h2 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+      }
+
+      .no-position-modal p {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 25px;
+      }
+
+      .notify-btn {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 5px;
+      }
+
+      .notify-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .close-btn {
+        background: #f0f0f0;
+        color: #666;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 5px;
+      }
+
+      .close-btn:hover {
+        background: #e0e0e0;
+        transform: translateY(-2px);
+      }
+
+      /* Admin Settings Button */
+      .admin-settings-btn {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: #667eea;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+        cursor: pointer;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        border: none;
+        color: white;
+        font-size: 24px;
+      }
+
+      .admin-settings-btn:hover {
+        transform: scale(1.1);
+        background: #764ba2;
+      }
+
+      /* Admin Panel Styles */
+      .admin-panel {
+        background: white;
+        margin: 50px auto;
+        padding: 40px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+        animation: slideInDown 0.3s ease-out;
+      }
+
+      .admin-panel h2 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+      }
+
+      .admin-panel p {
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 0.95rem;
+      }
+
+      .current-number {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .current-number strong {
+        color: #667eea;
+        font-size: 1.2rem;
+      }
+
       @keyframes pulse {
         0% {
           box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
@@ -412,6 +549,23 @@
           opacity: 0;
         }
         to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0.3);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        70% {
+          transform: scale(0.9);
+        }
+        100% {
+          transform: scale(1);
           opacity: 1;
         }
       }
@@ -551,6 +705,24 @@
 
         .form-group textarea {
           min-height: 70px;
+        }
+
+        .no-position-modal {
+          margin: 50px auto;
+          padding: 30px;
+        }
+
+        .no-position-modal h2 {
+          font-size: 1.5rem;
+        }
+
+        .no-position-modal p {
+          font-size: 1rem;
+        }
+
+        .admin-panel {
+          margin: 20px auto;
+          padding: 25px;
         }
       }
       footer {
@@ -902,7 +1074,7 @@
               <li>Community recognition</li>
             </ul>
           </div>
-          <button class="apply-btn" onclick="openModal('volunteer')">
+          <button class="apply-btn" onclick="showNoPositionModal('volunteer')">
             Volunteer Now
           </button>
         </div>
@@ -923,7 +1095,7 @@
               <li>Networking opportunities</li>
             </ul>
           </div>
-          <button class="apply-btn" onclick="openModal('trainer')">
+          <button class="apply-btn" onclick="showNoPositionModal('trainer')">
             Join as Trainer
           </button>
         </div>
@@ -953,6 +1125,7 @@
       href="https://wa.me/9082861960?text=Hello!%20I%20found%20you%20on%20your%20website"
       class="floating-whatsapp"
       target="_blank"
+      id="floatingWhatsApp"
     >
       <svg
         class="whatsapp-icon"
@@ -965,7 +1138,16 @@
       </svg>
     </a>
 
-    <!-- Modal for Applications -->
+    <!-- Admin Settings Button -->
+    <button
+      class="admin-settings-btn"
+      onclick="openAdminPanel()"
+      title="Admin Settings"
+    >
+      ⚙️
+    </button>
+
+    <!-- Modal for Job Applications -->
     <div id="applicationModal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
@@ -1000,29 +1182,6 @@
             </select>
           </div>
 
-          <div class="form-group" id="availabilityGroup" style="display: none">
-            <label for="availability">Availability</label>
-            <select id="availability" name="availability">
-              <option value="">Select availability</option>
-              <option value="weekdays">Weekdays</option>
-              <option value="weekends">Weekends</option>
-              <option value="evenings">Evenings</option>
-              <option value="flexible">Flexible</option>
-            </select>
-          </div>
-
-          <div class="form-group" id="expertiseGroup" style="display: none">
-            <label for="expertise">Area of Expertise</label>
-            <select id="expertise" name="expertise">
-              <option value="">Select expertise</option>
-              <option value="technology">Technology</option>
-              <option value="business">Business</option>
-              <option value="design">Design</option>
-              <option value="marketing">Marketing</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
           <div class="form-group">
             <label for="experience">Experience/Background</label>
             <textarea
@@ -1046,76 +1205,332 @@
       </div>
     </div>
 
+    <!-- No Positions Available Modal -->
+    <div id="noPositionModal" class="modal">
+      <div class="no-position-modal">
+        <span class="close" onclick="closeNoPositionModal()">&times;</span>
+        <div class="no-position-icon">
+          <span id="noPositionEmoji">📋</span>
+        </div>
+        <h2 id="noPositionTitle">Currently No Openings</h2>
+        <p id="noPositionMessage">
+          We don't have any volunteer positions available at the moment, but
+          we'd love to keep you in our network! Leave your details and we'll
+          notify you when opportunities arise.
+        </p>
+        <div>
+          <button class="notify-btn" onclick="openNotifyForm()">
+            Get Notified
+          </button>
+          <button class="close-btn" onclick="closeNoPositionModal()">
+            Maybe Later
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Form Modal -->
+    <div id="notifyModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeNotifyModal()">&times;</span>
+        <div class="modal-header">
+          <h2>Stay Updated</h2>
+        </div>
+        <form id="notifyForm">
+          <div class="form-group">
+            <label for="notifyName">Full Name *</label>
+            <input type="text" id="notifyName" name="notifyName" required />
+          </div>
+
+          <div class="form-group">
+            <label for="notifyEmail">Email Address *</label>
+            <input type="email" id="notifyEmail" name="notifyEmail" required />
+          </div>
+
+          <div class="form-group">
+            <label for="notifyPhone">Phone Number</label>
+            <input type="tel" id="notifyPhone" name="notifyPhone" />
+          </div>
+
+          <div class="form-group">
+            <label for="notifyInterest">I'm interested in:</label>
+            <select id="notifyInterest" name="notifyInterest" required>
+              <option value="">Select your interest</option>
+              <option value="volunteer">Volunteer Opportunities</option>
+              <option value="trainer">Trainer Positions</option>
+              <option value="both">Both</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="notifyMessage">Additional Message (Optional)</label>
+            <textarea
+              id="notifyMessage"
+              name="notifyMessage"
+              placeholder="Tell us about your skills or interests..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Subscribe to Updates</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="modal">
+      <div class="admin-panel">
+        <span class="close" onclick="closeAdminPanel()">&times;</span>
+        <h2>Admin Settings</h2>
+        <p>Change WhatsApp number for receiving form submissions</p>
+
+        <div class="current-number">
+          <p style="margin-bottom: 10px; color: #666">
+            Current WhatsApp Number:
+          </p>
+          <strong id="displayWhatsAppNumber">+91 9082861960</strong>
+        </div>
+
+        <form id="adminForm">
+          <div class="form-group">
+            <label for="newWhatsAppNumber">New WhatsApp Number *</label>
+            <input
+              type="tel"
+              id="newWhatsAppNumber"
+              name="newWhatsAppNumber"
+              placeholder="e.g., 919082861960 (with country code, no +)"
+              required
+            />
+            <small style="color: #666; display: block; margin-top: 5px">
+              Enter number with country code (e.g., 919082861960 for India)
+            </small>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Update WhatsApp Number
+          </button>
+        </form>
+      </div>
+    </div>
+
     <script>
+      // WhatsApp Number Management
+      let whatsappNumber =
+        localStorage.getItem("whatsappNumber") || "9082861960";
+
+      // Update WhatsApp button link on page load
+      function updateWhatsAppLink() {
+        const whatsappBtn = document.getElementById("floatingWhatsApp");
+        const displayNumber = document.getElementById("displayWhatsAppNumber");
+
+        whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=Hello!%20I%20found%20you%20on%20your%20website`;
+
+        // Format display number
+        let formattedNumber = whatsappNumber;
+        if (whatsappNumber.startsWith("91") && whatsappNumber.length === 12) {
+          formattedNumber = `+91 ${whatsappNumber.substring(2)}`;
+        } else if (!whatsappNumber.startsWith("+")) {
+          formattedNumber = `+${whatsappNumber}`;
+        }
+        displayNumber.textContent = formattedNumber;
+      }
+
+      // Call on page load
+      updateWhatsAppLink();
+
       let currentApplicationType = "";
+      let currentNotifyType = "";
 
       function openModal(type) {
         currentApplicationType = type;
         const modal = document.getElementById("applicationModal");
         const modalTitle = document.getElementById("modalTitle");
-        const positionGroup = document.getElementById("positionGroup");
-        const availabilityGroup = document.getElementById("availabilityGroup");
-        const expertiseGroup = document.getElementById("expertiseGroup");
 
         // Reset form
         document.getElementById("applicationForm").reset();
 
-        // Configure modal based on type
-        if (type === "job") {
-          modalTitle.textContent = "Apply for Position";
-          positionGroup.style.display = "block";
-          availabilityGroup.style.display = "none";
-          expertiseGroup.style.display = "none";
-        } else if (type === "volunteer") {
-          modalTitle.textContent = "Volunteer Application";
-          positionGroup.style.display = "none";
-          availabilityGroup.style.display = "block";
-          expertiseGroup.style.display = "none";
-        } else if (type === "trainer") {
-          modalTitle.textContent = "Trainer Application";
-          positionGroup.style.display = "none";
-          availabilityGroup.style.display = "block";
-          expertiseGroup.style.display = "block";
-        }
-
+        modalTitle.textContent = "Apply for Position";
         modal.style.display = "block";
-        // Prevent body scroll when modal is open
         document.body.style.overflow = "hidden";
       }
 
       function closeModal() {
         document.getElementById("applicationModal").style.display = "none";
-        // Restore body scroll
+        document.body.style.overflow = "auto";
+      }
+
+      function showNoPositionModal(type) {
+        currentNotifyType = type;
+        const modal = document.getElementById("noPositionModal");
+        const emoji = document.getElementById("noPositionEmoji");
+        const title = document.getElementById("noPositionTitle");
+        const message = document.getElementById("noPositionMessage");
+
+        if (type === "volunteer") {
+          emoji.textContent = "🎉";
+          title.textContent = "No Volunteer Positions Right Now";
+          message.textContent =
+            "We don't have any volunteer positions available at the moment, but we'd love to keep you in our network! Leave your details and we'll notify you when opportunities arise.";
+        } else if (type === "trainer") {
+          emoji.textContent = "🎓";
+          title.textContent = "Trainer Positions Not Available";
+          message.textContent =
+            "Thank you for your interest in becoming a trainer! We're not currently hiring trainers, but we'd like to stay connected. Sign up to be notified when positions open up.";
+        }
+
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeNoPositionModal() {
+        document.getElementById("noPositionModal").style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      function openNotifyForm() {
+        closeNoPositionModal();
+        const modal = document.getElementById("notifyModal");
+        const interestSelect = document.getElementById("notifyInterest");
+
+        // Pre-select the interest based on what button they clicked
+        if (currentNotifyType === "volunteer") {
+          interestSelect.value = "volunteer";
+        } else if (currentNotifyType === "trainer") {
+          interestSelect.value = "trainer";
+        }
+
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeNotifyModal() {
+        document.getElementById("notifyModal").style.display = "none";
+        document.getElementById("notifyForm").reset();
+        document.body.style.overflow = "auto";
+      }
+
+      function openAdminPanel() {
+        const modal = document.getElementById("adminModal");
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeAdminPanel() {
+        document.getElementById("adminModal").style.display = "none";
+        document.getElementById("adminForm").reset();
         document.body.style.overflow = "auto";
       }
 
       // Close modal when clicking outside
       window.onclick = function (event) {
-        const modal = document.getElementById("applicationModal");
-        if (event.target === modal) {
+        const applicationModal = document.getElementById("applicationModal");
+        const noPositionModal = document.getElementById("noPositionModal");
+        const notifyModal = document.getElementById("notifyModal");
+        const adminModal = document.getElementById("adminModal");
+
+        if (event.target === applicationModal) {
           closeModal();
+        } else if (event.target === noPositionModal) {
+          closeNoPositionModal();
+        } else if (event.target === notifyModal) {
+          closeNotifyModal();
+        } else if (event.target === adminModal) {
+          closeAdminPanel();
         }
       };
 
-      // Handle form submission
+      // Function to send data to WhatsApp
+      function sendToWhatsApp(formData, formType) {
+        let message = `*New ${formType} Submission*\n\n`;
+
+        for (let [key, value] of Object.entries(formData)) {
+          if (value) {
+            // Format the key name
+            let formattedKey = key.replace(/([A-Z])/g, " $1").trim();
+            formattedKey =
+              formattedKey.charAt(0).toUpperCase() + formattedKey.slice(1);
+            message += `*${formattedKey}:* ${value}\n`;
+          }
+        }
+
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(message);
+
+        // Open WhatsApp with the message
+        window.open(
+          `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
+          "_blank",
+        );
+      }
+
+      // Handle job application form submission
       document
         .getElementById("applicationForm")
         .addEventListener("submit", function (e) {
           e.preventDefault();
 
-          // Get form data
           const formData = new FormData(this);
           const data = Object.fromEntries(formData.entries());
           data.applicationType = currentApplicationType;
 
-          // Simulate form submission
+          // Send to WhatsApp
+          sendToWhatsApp(data, "Job Application");
+
           alert(
-            "Thank you for your application! We will review it and get back to you soon."
+            "Thank you for your application! Your details have been sent via WhatsApp. We will review it and get back to you soon.",
           );
           closeModal();
 
-          // In a real application, you would send this data to your server
           console.log("Application submitted:", data);
+        });
+
+      // Handle notification form submission
+      document
+        .getElementById("notifyForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData.entries());
+
+          // Send to WhatsApp
+          sendToWhatsApp(data, "Notification Request");
+
+          alert(
+            "Thank you! We've added you to our notification list and sent your details via WhatsApp. We'll reach out when positions become available.",
+          );
+          closeNotifyModal();
+
+          console.log("Notification subscription:", data);
+        });
+
+      // Handle admin form submission
+      document
+        .getElementById("adminForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const newNumber = document
+            .getElementById("newWhatsAppNumber")
+            .value.trim();
+
+          // Validate the number (basic validation)
+          if (newNumber.length < 10) {
+            alert("Please enter a valid WhatsApp number with country code.");
+            return;
+          }
+
+          // Remove any spaces, dashes, or plus signs
+          const cleanedNumber = newNumber.replace(/[\s\-\+]/g, "");
+
+          // Save to localStorage
+          whatsappNumber = cleanedNumber;
+          localStorage.setItem("whatsappNumber", cleanedNumber);
+
+          // Update the WhatsApp link
+          updateWhatsAppLink();
+
+          alert("WhatsApp number updated successfully!");
+          closeAdminPanel();
         });
 
       // Add animation delays to cards
@@ -1197,12 +1612,5 @@
         © 2024 TinkerQubits Foundation. All Rights Reserved.
       </div>
     </footer>
-
-    <script>
-      function toggleMenu() {
-        const navMenu = document.getElementById("nav-menu");
-        navMenu.classList.toggle("active");
-      }
-    </script>
   </body>
 </html>
