@@ -70,7 +70,7 @@
 
       .header p {
         font-size: 1.2rem;
-        color: #666;
+        color: #000;
         max-width: 600px;
         margin: 0 auto;
         animation: fadeIn 1s ease-out 0.3s both;
@@ -130,7 +130,7 @@
       }
 
       .opportunity-card p {
-        color: #666;
+        color: #000;
         margin-bottom: 25px;
         line-height: 1.6;
       }
@@ -152,7 +152,7 @@
 
       .benefits li {
         padding: 5px 0;
-        color: #666;
+        color: #000;
         position: relative;
         padding-left: 20px;
       }
@@ -195,7 +195,7 @@
       .contact-section h2 {
         font-size: 2rem;
         margin-bottom: 20px;
-        color: #333;
+        color: #000;
       }
 
       .contact-info {
@@ -210,7 +210,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        color: #666;
+        color: #000;
       }
 
       .contact-item i {
@@ -298,7 +298,7 @@
       }
 
       .modal-header h2 {
-        color: #333;
+        color: #000;
         font-size: 1.8rem;
         margin: 0;
       }
@@ -311,7 +311,7 @@
         display: block;
         margin-bottom: 5px;
         font-weight: 600;
-        color: #333;
+        color: #000;
         font-size: 0.9rem;
       }
 
@@ -403,13 +403,13 @@
       }
 
       .no-position-modal h2 {
-        color: #333;
+        color: #000;
         margin-bottom: 15px;
         font-size: 1.8rem;
       }
 
       .no-position-modal p {
-        color: #666;
+        color: #000;
         font-size: 1.1rem;
         line-height: 1.6;
         margin-bottom: 25px;
@@ -490,13 +490,13 @@
       }
 
       .admin-panel h2 {
-        color: #333;
+        color: #000;
         margin-bottom: 10px;
         font-size: 1.8rem;
       }
 
       .admin-panel p {
-        color: #666;
+        color: #000;
         margin-bottom: 30px;
         font-size: 0.95rem;
       }
@@ -745,7 +745,7 @@
       }
 
       .footer-links a {
-        color: #ffffff;
+        color: #000000;
         text-decoration: none;
         transition: color 0.3s ease;
       }
@@ -799,12 +799,12 @@
       .footer-center h3 {
         font-size: 20px;
         margin-bottom: 15px;
-        color: #ffffff;
+        color: #000000;
       }
 
       .footer-center p {
         margin: 6px 0;
-        color: #ffffff;
+        color: #000000;
         font-size: 14px;
       }
 
@@ -817,7 +817,7 @@
         text-align: center;
         padding-top: 20px;
         font-size: 13px;
-        color: #ffff;
+        color: #000000;
         border-top: 1px solid #333;
         margin-top: 30px;
       }
@@ -1105,23 +1105,6 @@
         </div>
       </div>
 
-      <div class="contact-section">
-        <h2>Have Questions?</h2>
-        <p>
-          We'd love to hear from you! Reach out to learn more about
-          opportunities.
-        </p>
-        <div class="contact-info">
-          <div class="contact-item">
-            <i>📧</i>
-            <span>careers@yourcompany.com</span>
-          </div>
-          <div class="contact-item">
-            <i>📞</i>
-            <span>+1 (555) 123-4567</span>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Floating WhatsApp Button -->
@@ -1142,14 +1125,6 @@
       </svg>
     </a>
 
-    <!-- Admin Settings Button -->
-    <button
-      class="admin-settings-btn"
-      onclick="openAdminPanel()"
-      title="Admin Settings"
-    >
-      ⚙️
-    </button>
 
     <!-- Modal for Job Applications -->
     <div id="applicationModal" class="modal">
@@ -1217,7 +1192,7 @@
           <span id="noPositionEmoji">📋</span>
         </div>
         <h2 id="noPositionTitle">Currently No Openings</h2>
-        <p id="noPositionMessage">
+        <p id="noPositionMessage" style="color: #000;">
           We don't have any volunteer positions available at the moment, but
           we'd love to keep you in our network! Leave your details and we'll
           notify you when opportunities arise.
@@ -1280,62 +1255,16 @@
       </div>
     </div>
 
-    <!-- Admin Panel Modal -->
-    <div id="adminModal" class="modal">
-      <div class="admin-panel">
-        <span class="close" onclick="closeAdminPanel()">&times;</span>
-        <h2>Admin Settings</h2>
-        <p>Change WhatsApp number for receiving form submissions</p>
-
-        <div class="current-number">
-          <p style="margin-bottom: 10px; color: #666">
-            Current WhatsApp Number:
-          </p>
-          <strong id="displayWhatsAppNumber">+91 9082861960</strong>
-        </div>
-
-        <form id="adminForm">
-          <div class="form-group">
-            <label for="newWhatsAppNumber">New WhatsApp Number *</label>
-            <input
-              type="tel"
-              id="newWhatsAppNumber"
-              name="newWhatsAppNumber"
-              placeholder="e.g., 919082861960 (with country code, no +)"
-              required
-            />
-            <small style="color: #666; display: block; margin-top: 5px">
-              Enter number with country code (e.g., 919082861960 for India)
-            </small>
-          </div>
-
-          <button type="submit" class="submit-btn">
-            Update WhatsApp Number
-          </button>
-        </form>
-      </div>
-    </div>
 
     <script>
       // WhatsApp Number Management
-      let whatsappNumber =
-        localStorage.getItem("whatsappNumber") || "9082861960";
+      let whatsappNumber = "919082861960"; // Hardcoded WhatsApp number
 
       // Update WhatsApp button link on page load
       function updateWhatsAppLink() {
         const whatsappBtn = document.getElementById("floatingWhatsApp");
-        const displayNumber = document.getElementById("displayWhatsAppNumber");
 
         whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=Hello!%20I%20found%20you%20on%20your%20website`;
-
-        // Format display number
-        let formattedNumber = whatsappNumber;
-        if (whatsappNumber.startsWith("91") && whatsappNumber.length === 12) {
-          formattedNumber = `+91 ${whatsappNumber.substring(2)}`;
-        } else if (!whatsappNumber.startsWith("+")) {
-          formattedNumber = `+${whatsappNumber}`;
-        }
-        displayNumber.textContent = formattedNumber;
       }
 
       // Call on page load
@@ -1412,24 +1341,12 @@
         document.body.style.overflow = "auto";
       }
 
-      function openAdminPanel() {
-        const modal = document.getElementById("adminModal");
-        modal.style.display = "block";
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeAdminPanel() {
-        document.getElementById("adminModal").style.display = "none";
-        document.getElementById("adminForm").reset();
-        document.body.style.overflow = "auto";
-      }
 
       // Close modal when clicking outside
       window.onclick = function (event) {
         const applicationModal = document.getElementById("applicationModal");
         const noPositionModal = document.getElementById("noPositionModal");
         const notifyModal = document.getElementById("notifyModal");
-        const adminModal = document.getElementById("adminModal");
 
         if (event.target === applicationModal) {
           closeModal();
@@ -1437,8 +1354,6 @@
           closeNoPositionModal();
         } else if (event.target === notifyModal) {
           closeNotifyModal();
-        } else if (event.target === adminModal) {
-          closeAdminPanel();
         }
       };
 
@@ -1507,35 +1422,6 @@
           console.log("Notification subscription:", data);
         });
 
-      // Handle admin form submission
-      document
-        .getElementById("adminForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const newNumber = document
-            .getElementById("newWhatsAppNumber")
-            .value.trim();
-
-          // Validate the number (basic validation)
-          if (newNumber.length < 10) {
-            alert("Please enter a valid WhatsApp number with country code.");
-            return;
-          }
-
-          // Remove any spaces, dashes, or plus signs
-          const cleanedNumber = newNumber.replace(/[\s\-\+]/g, "");
-
-          // Save to localStorage
-          whatsappNumber = cleanedNumber;
-          localStorage.setItem("whatsappNumber", cleanedNumber);
-
-          // Update the WhatsApp link
-          updateWhatsAppLink();
-
-          alert("WhatsApp number updated successfully!");
-          closeAdminPanel();
-        });
 
       // Add animation delays to cards
       document.addEventListener("DOMContentLoaded", function () {
