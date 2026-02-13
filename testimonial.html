@@ -1,9 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Testimonials - Educational Impact</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <style>
       * {
         margin: 0;
@@ -209,7 +213,6 @@
         gap: 30px;
         margin-top: 60px;
         padding: 40px;
-
         border-radius: 20px;
         background: rgba(220, 235, 245, 0.6);
         box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
@@ -292,6 +295,8 @@
       .nav-link:hover {
         background-color: rgba(0, 0, 0, 0.05);
       }
+
+      /* FOOTER STYLES */
       footer {
         background-color: #312e81;
         color: #ffffff;
@@ -440,6 +445,36 @@
 
         .testimonial-card {
           padding: 20px;
+        }
+
+        .footer-links {
+          justify-content: center;
+          flex-wrap: wrap;
+          text-align: center;
+          gap: 15px;
+        }
+
+        .footer-container {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 30px;
+        }
+
+        .footer-left {
+          align-items: center;
+        }
+
+        .footer-left img {
+          margin: 0 auto 20px;
+        }
+
+        .footer-social-icons {
+          justify-content: center;
+        }
+
+        .footer-center {
+          align-items: center;
         }
       }
 
@@ -729,69 +764,14 @@
           <div class="thumbs-up">👍</div>
           <div class="testimonial-content">
             <p class="testimonial-text">
-              “Working with this team has been a truly enriching experience for
-              our school. Their approach to curriculum development is both
-              innovative and child-centered. Our students are now showing more
-              interest in learning, and our teachers feel more confident and
-              equipped. I deeply appreciate their dedication to quality
-              education.”
+              "We are grateful to collaborate with your team for our computer
+              classes. Your tech education program has greatly benefited our
+              students by building strong computer skills, introducing coding
+              and digital literacy, and boosting their confidence. We truly
+              appreciate your efforts and look forward to continuing this
+              partnership."
             </p>
             <div class="testimonial-author">
-              <img
-                src="images/Screenshot 2025-07-29 104309.png"
-                alt="Dr. Michael Johnson"
-                class="author-photo"
-              />
-              <div class="author-info">
-                <div class="author-name">Dr. Nisha Mohandash</div>
-                <div class="author-role">Administrator, RAV School</div>
-                <div class="rating"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card top-notch principals">
-          <div class="category-badge">Principal</div>
-          <div class="testimonial-content">
-            <p class="testimonial-text">
-              "Outstanding results! Student performance improved by 40% after
-              implementing their teaching methodologies.The workshops they
-              conducted for our teachers were not only informative but also
-              highly practical and engaging. Highly recommended for any
-              educational institution."
-            </p>
-            <div class="testimonial-author">
-              <img
-                src="images/Screenshot 2025-07-29 104309.png"
-                alt="Dr. Michael Johnson"
-                class="author-photo"
-              />
-              <div class="author-info">
-                <div class="author-name">Dr. Nisha Mohandash</div>
-                <div class="author-role">Administrator, RAV School</div>
-                <div class="rating"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Trained Teachers -->
-        <div class="testimonial-card recommended teachers">
-          <div class="category-badge">Teacher</div>
-          <div class="testimonial-content">
-            <p class="testimonial-text">
-              "The professional development sessions were incredibly
-              valuable.The workshops they conducted for our teachers were not
-              only informative but also highly practical and engaging. I learned
-              practical techniques that I use in my classroom every day."
-            </p>
-            <div class="testimonial-author">
-              <img
-                src="images/Screenshot 2025-07-29 104309.png"
-                alt="Dr. Michael Johnson"
-                class="author-photo"
-              />
               <div class="author-info">
                 <div class="author-name">Dr. Nisha Mohandash</div>
                 <div class="author-role">Administrator, RAV School</div>
@@ -802,22 +782,22 @@
         </div>
 
         <div class="testimonial-card excellent teachers">
-          <div class="category-badge">Teacher</div>
+          <div class="category-badge">Principal</div>
           <div class="testimonial-content">
             <p class="testimonial-text">
-              "Best training I've ever received! The interactive approach and
-              ongoing support made all the difference in my teaching
-              effectiveness."
+              "The computer education program conducted by your team has been
+              highly beneficial for our students. The instructors are dedicated,
+              patient, and engaging, which has made learning enjoyable and
+              impactful. We truly appreciate your efforts in empowering our
+              students with essential digital skills and look forward to a
+              continued association."
             </p>
             <div class="testimonial-author">
-              <img
-                src="images/Screenshot 2025-07-29 104309.png"
-                alt="Dr. Michael Johnson"
-                class="author-photo"
-              />
               <div class="author-info">
-                <div class="author-name">Dr. Nisha Mohandash</div>
-                <div class="author-role">Administrator, RAV School</div>
+                <div class="author-name">Pankaj Agarwal</div>
+                <div class="author-role">
+                  Principal, MD Bhatia English High School
+                </div>
                 <div class="rating"></div>
               </div>
             </div>
@@ -826,21 +806,20 @@
 
         <!-- Students -->
         <div class="testimonial-card outstanding students">
-          <div class="category-badge">Student</div>
+          <div class="category-badge">Teacher</div>
           <div class="testimonial-content">
             <p class="testimonial-text">
-              "Learning is so much more fun now! My teachers help me understand
-              things better and I actually look forward to going to school."
+              " Fellow, Think Sharp Foundation TinkerQuibits के प्रशिक्षण ने
+              मुझे कोडिंग सिखाकर मेरी सोच और कार्यशैली पूरी तरह बदल दी। अब मैं
+              समस्याओं को तार्किक और चरणबद्ध तरीके से हल करता हूँ। इस अनुभव से
+              प्रेरित होकर मैंने ग्रामीण विद्यार्थियों को कोडिंग सिखाई, जिससे
+              उनमें तकनीकी दक्षता के साथ अनुशासन, आत्मविश्वास और जीवन कौशल
+              विकसित हुए। यह सहयोग वास्तव में परिवर्तनकारी रहा है।"
             </p>
             <div class="testimonial-author">
-              <img
-                src="images/Screenshot 2025-07-29 104309.png"
-                alt="Dr. Michael Johnson"
-                class="author-photo"
-              />
               <div class="author-info">
-                <div class="author-name">Dr. Nisha Mohandash</div>
-                <div class="author-role">Administrator, RAV School</div>
+                <div class="author-name">गौरव तानाजी गायकवाड</div>
+                <div class="author-role">Fellow Think Sharp Foundation</div>
                 <div class="rating"></div>
               </div>
             </div>
@@ -848,22 +827,21 @@
         </div>
 
         <div class="testimonial-card excellent students">
-          <div class="category-badge">Student</div>
+          <div class="category-badge">Teacher</div>
           <div class="testimonial-content">
             <p class="testimonial-text">
-              "My grades improved so much after my teachers started using new
-              teaching methods. Math used to be scary, but now it's my favorite
-              subject!"
+              "Computer Fellow, Christ Global School My fellowship with
+              TinkerQubits has been transformative. Teaching students,
+              developing technical content, and working on real projects with
+              excellent mentorship helped me grow both technically and
+              professionally. The supportive, disciplined environment built my
+              confidence and work ethics—a truly valuable stepping stone in my
+              career."
             </p>
             <div class="testimonial-author">
-              <img
-                src="images/Screenshot 2025-07-29 104309.png"
-                alt="Dr. Michael Johnson"
-                class="author-photo"
-              />
               <div class="author-info">
-                <div class="author-name">Dr. Nisha Mohandash</div>
-                <div class="author-role">Administrator, RAV School</div>
+                <div class="author-name">Amol Mutha</div>
+                <div class="author-role">Teacher, Christ Global School</div>
                 <div class="rating"></div>
               </div>
             </div>
@@ -872,22 +850,19 @@
 
         <!-- Partners/Funders -->
         <div class="testimonial-card recommended partners">
-          <div class="category-badge">Partner</div>
+          <div class="category-badge">Student</div>
           <div class="testimonial-content">
             <p class="testimonial-text">
-              "Exceptional program with measurable results. Their data-driven
-              approach and commitment to excellence make them an ideal partner
-              for educational initiatives."
+              "The mobile app development workshop was a great learning
+              experience for me. I learned how apps are created and can now
+              build basic apps confidently. The instructors explained everything
+              clearly, and the project work helped me improve my problem-solving
+              and teamwork skills. Thank you for this wonderful opportunity!"
             </p>
             <div class="testimonial-author">
-              <img
-                src="images/Screenshot 2025-07-29 104309.png"
-                alt="Dr. Michael Johnson"
-                class="author-photo"
-              />
               <div class="author-info">
-                <div class="author-name">Dr. Nisha Mohandash</div>
-                <div class="author-role">Administrator, RAV School</div>
+                <div class="author-name">Ajay</div>
+                <div class="author-role">Student</div>
                 <div class="rating"></div>
               </div>
             </div>
@@ -903,146 +878,16 @@
               remarkable."
             </p>
             <div class="testimonial-author">
-              <img
-                src="images/Screenshot 2025-07-29 104309.png"
-                alt="Dr. Michael Johnson"
-                class="author-photo"
-              />
               <div class="author-info">
-                <div class="author-name">Dr. Nisha Mohandash</div>
-                <div class="author-role">Administrator, RAV School</div>
+                <div class="author-name">Divy Varia</div>
+                <div class="author-role">Student, KJ somaiya college</div>
                 <div class="rating"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="impact-stats">
-        <div class="stat-item">
-          <div class="stat-number">500+</div>
-          <div class="stat-label">Teachers Trained</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">50+</div>
-          <div class="stat-label">Schools Partnered</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">10,000+</div>
-          <div class="stat-label">Students Impacted</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">98%</div>
-          <div class="stat-label">Satisfaction Rate</div>
-        </div>
-      </div>
     </div>
-
-    <script>
-      // Add interactive hover effects
-      document.querySelectorAll(".testimonial-card").forEach((card) => {
-        card.addEventListener("mouseenter", function () {
-          this.style.transform = "rotate(0deg) scale(1.05)";
-          this.style.zIndex = "10";
-        });
-
-        card.addEventListener("mouseleave", function () {
-          const rotation = Math.random() * 2 - 1; // Random rotation between -1 and 1
-          this.style.transform = `rotate(${rotation}deg) scale(1)`;
-          this.style.zIndex = "1";
-        });
-      });
-
-      // Add click animation
-      document.querySelectorAll(".testimonial-card").forEach((card) => {
-        card.addEventListener("click", function () {
-          this.style.animation = "none";
-          this.style.transform = "rotate(0deg) scale(0.95)";
-
-          setTimeout(() => {
-            this.style.transform = "rotate(0deg) scale(1.02)";
-          }, 100);
-
-          setTimeout(() => {
-            this.style.animation = "float 6s ease-in-out infinite";
-            const rotation = Math.random() * 2 - 1;
-            this.style.transform = `rotate(${rotation}deg) scale(1)`;
-          }, 300);
-        });
-      });
-
-      // Parallax effect for floating elements
-      document.addEventListener("mousemove", function (e) {
-        const shapes = document.querySelectorAll(".floating-shape");
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-
-        shapes.forEach((shape, index) => {
-          const speed = (index + 1) * 0.3;
-          const moveX = (x - 0.5) * speed * 30;
-          const moveY = (y - 0.5) * speed * 30;
-          shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
-      });
-
-      // Animate stats on scroll
-      const observerOptions = {
-        threshold: 0.5,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const statNumbers = entry.target.querySelectorAll(".stat-number");
-            statNumbers.forEach((stat) => {
-              const finalValue = stat.textContent;
-              const numericValue = parseInt(finalValue.replace(/\D/g, ""));
-              let current = 0;
-              const increment = numericValue / 50;
-
-              const timer = setInterval(() => {
-                current += increment;
-                if (current >= numericValue) {
-                  stat.textContent = finalValue;
-                  clearInterval(timer);
-                } else {
-                  stat.textContent =
-                    Math.floor(current) +
-                    (finalValue.includes("%") ? "%" : "+");
-                }
-              }, 30);
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      observer.observe(document.querySelector(".impact-stats"));
-
-      function toggleMenu() {
-        const navMenu = document.getElementById("nav-menu");
-        navMenu.classList.toggle("active");
-      }
-
-      // Close menu when clicking outside
-      document.addEventListener("click", function (event) {
-        const navbar = document.querySelector(".navbar");
-        const navMenu = document.getElementById("nav-menu");
-
-        if (!navbar.contains(event.target)) {
-          navMenu.classList.remove("active");
-        }
-      });
-
-      // Handle window resize
-      window.addEventListener("resize", function () {
-        if (window.innerWidth > 768) {
-          const navMenu = document.getElementById("nav-menu");
-          navMenu.classList.remove("active");
-        }
-      });
-    </script>
 
     <footer>
       <div class="footer-links">

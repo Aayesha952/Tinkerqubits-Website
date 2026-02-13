@@ -1,9 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Moments from the Field - Gallery</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <style>
       * {
         margin: 0;
@@ -741,23 +745,23 @@
       <div class="gallery-grid" id="gallery-grid">
         <!-- Training Workshops -->
         <div class="gallery-item" data-category="training">
-          <img src="images/IMG20250201142959.jpg" alt="Workshop Session" />
+          <img src="images/20211230_140903.jpg" alt="Workshop Session" />
           <div class="gallery-item-overlay">
             <div class="gallery-item-text">Interactive Training Workshop</div>
           </div>
         </div>
 
         <div class="gallery-item" data-category="training">
-          <img src="images/IMG20250201111144.jpg" alt="Hands-on Training" />
+          <img src="images/IMG-20220317-WA0013.jpg" alt="Hands-on Training" />
           <div class="gallery-item-overlay">
             <div class="gallery-item-text">Hands-on Technical Training</div>
           </div>
         </div>
 
         <div class="gallery-item" data-category="training">
-          <img src="images/IMG20250201143002.jpg" alt="Group Discussion" />
+          <img src="images/WhatsApp Image 2026-02-09 at 21.40.28.jpeg" alt="Group Discussion" />
           <div class="gallery-item-overlay">
-            <div class="gallery-item-text">Group Learning Session</div>
+            <div class="gallery-item-text">Robotics</div>
           </div>
         </div>
 
@@ -777,29 +781,29 @@
         </div>
 
         <div class="gallery-item" data-category="events">
-          <img src="images/IMG20250201143024.jpg" alt="Community Event" />
+          <img src="images/IMG20250201143936.jpg" alt="Community Event" />
           <div class="gallery-item-overlay">
-            <div class="gallery-item-text">Community Gathering</div>
+            <div class="gallery-item-text">TMM</div>
           </div>
         </div>
 
         <!-- Student Projects -->
         <div class="gallery-item" data-category="projects">
-          <img src="images/IMG20250201143405.jpg" alt="Project Presentation" />
+          <img src="images/IMG-20251231-WA0058.jpg" alt="Project Presentation" />
           <div class="gallery-item-overlay">
             <div class="gallery-item-text">Project Presentation</div>
           </div>
         </div>
 
         <div class="gallery-item" data-category="projects">
-          <img src="images/IMG20250201144043.jpg" alt="Team Collaboration" />
+          <img src="images/IMG_6955.jpg" alt="Team Collaboration" />
           <div class="gallery-item-overlay">
             <div class="gallery-item-text">Team Collaboration</div>
           </div>
         </div>
 
         <div class="gallery-item" data-category="projects">
-          <img src="images/IMG20250201144108.jpg" alt="Innovation Project" />
+          <img src="images/IMG20250201111144.jpg" alt="Innovation Project" />
           <div class="gallery-item-overlay">
             <div class="gallery-item-text">Innovation Showcase</div>
           </div>
@@ -821,14 +825,14 @@
         </div>
 
         <div class="gallery-item" data-category="awards">
-          <img src="images/IMG20250201144043.jpg" alt="Success Celebration" />
+          <img src="images/TMM2nd Edition.jpg" alt="Success Celebration" />
           <div class="gallery-item-overlay">
             <div class="gallery-item-text">Success Celebration</div>
           </div>
         </div>
       </div>
 
-      <div class="stats-container">
+      <!--<div class="stats-container">
         <div class="stat-item">
           <div class="stat-number">150+</div>
           <div class="stat-label">Training Sessions</div>
@@ -844,7 +848,7 @@
         <div class="stat-item">
           <div class="stat-number">50+</div>
           <div class="stat-label">Awards Given</div>
-        </div>
+        </div>-->
       </div>
     </div>
 
@@ -903,7 +907,7 @@
       // Lightbox functionality
       function getVisibleItems() {
         return Array.from(galleryItems).filter(
-          (item) => !item.classList.contains("hidden")
+          (item) => !item.classList.contains("hidden"),
         );
       }
 

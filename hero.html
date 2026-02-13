@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tinker Qubits - Tech Education for Kids</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <style>
       * {
         margin: 0;
@@ -292,6 +296,129 @@
           padding: 1.5rem;
         }
       }
+
+      /* FOOTER STYLES */
+      footer {
+        background-color: #312e81;
+        color: #ffffff;
+        padding: 40px 60px;
+        margin-top: 60px;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: flex-end;
+        gap: 30px;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+
+      .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #ccc;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 60px;
+      }
+
+      .footer-left {
+        flex: 1;
+        min-width: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-left img {
+        max-width: 180px;
+        margin-bottom: 20px;
+      }
+
+      .footer-social-icons {
+        display: flex;
+        gap: 20px;
+      }
+
+      .footer-social-icons a {
+        color: #00ff88;
+        font-size: 20px;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-social-icons a:hover {
+        color: #ffffff;
+      }
+
+      .footer-center {
+        flex: 1;
+        min-width: 280px;
+      }
+
+      .footer-center h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: #ffffff;
+      }
+
+      .footer-center p {
+        margin: 6px 0;
+        color: #ffffff;
+        font-size: 14px;
+      }
+
+      .footer-center i {
+        margin-right: 8px;
+        color: #00ff88;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        font-size: 13px;
+        color: #ffff;
+        border-top: 1px solid #333;
+        margin-top: 30px;
+      }
+
+      /* FOOTER RESPONSIVE */
+      @media (max-width: 768px) {
+        .footer-links {
+          justify-content: center;
+          flex-wrap: wrap;
+          text-align: center;
+          gap: 15px;
+        }
+
+        .footer-container {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 30px;
+        }
+
+        .footer-left img {
+          margin: 0 auto 20px;
+        }
+
+        .footer-social-icons {
+          justify-content: center;
+        }
+
+        .footer-center {
+          align-items: center;
+        }
+      }
     </style>
   </head>
   <body>
@@ -504,5 +631,43 @@
         </div>
       </div>
     </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <div class="footer-container">
+        <div class="footer-left">
+          <img src="images/logo-v3-cut-275x116.png" alt="TinkerQubits Logo" />
+          <div class="footer-social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-center">
+          <h3><strong>TinkerQubits Foundation</strong></h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> TinkerQubits Foundation, 7/2,
+            Assisi Nagar, P.L Lokhande Marg, Chembur(W), Mumbai - 400089
+          </p>
+          <p><i class="fas fa-phone"></i> +91 98190 44922 | +91 8624 995979</p>
+          <p>
+            <i class="fas fa-envelope"></i> rinsa@tinkerqubits.org |
+            info@tinkerqubits.org
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2024 TinkerQubits Foundation. All Rights Reserved.
+      </div>
+    </footer>
   </body>  
 </html>

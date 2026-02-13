@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <style>
       * {
         margin: 0;
@@ -197,7 +201,7 @@
         margin: 20px;
         background: rgba(220, 235, 245, 0.6);
         padding: 1.5rem 2rem;
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+
         border-radius: 20px;
         overflow: hidden;
         max-width: 800px;
@@ -214,7 +218,7 @@
         font-size: 2rem;
         padding: 10px;
        color: #2c3e50;
-        
+
       }
 
       .header p {
@@ -378,9 +382,7 @@
         background-color: #2196F3; /* Blue color for active programs */
       }
 
-      .future-plan {
-        background-color: #FFC107; /* Yellow color for future plans (matching the map) */
-      }
+      
        footer {
         background-color: #312e81;
         color: #ffffff;
@@ -785,11 +787,11 @@
     <div class="map-indicator">
       <div class="indicator-item">
         <div class="color-box active-program"></div>
-        <span>Active Program</span>
+        <span>Program</span>
       </div>
       <div class="indicator-item">
         <div class="color-box future-plan"></div>
-        <span>Future Plan</span>
+        <!-- <span>Future Plan</span> -->
       </div>
     </div>
       <svg
@@ -1072,10 +1074,10 @@
           />
         </g>
       </svg>
-      
+     
     </div>
 
-  
+ 
 
         <div class="stats-grid">
           <div class="stat-card">
@@ -1119,54 +1121,38 @@
     const activePrograms = {
         'Maharashtra': {
             location:"Mumbai, Pune, Nashik, Latur",
-            teachers: 120,
-            schools: 4,
-            status: 'Active Program',
-            description: '🟢 Currently running digital literacy and teacher training programs across 134 schools'
+            teachers: 194,
+            schools: 12,
+            
+            
         },
         'Gujarat': {
-            location: "Ahmedabad, Surat, Vadodara, Rajkot",
-            teachers: 278,
-            schools: 89,
-            status: 'Active Program',
-            description: '🟢 Active vocational training and skill development programs in industrial areas'
+            location: "Vadodara",
+            teachers: 2,
+            schools: 1,
+            
         },
         'Karnataka': {
-            location: "Bangalore, Mysore, Hubli, Belgaum",
-            teachers: 289,
-            schools: 78,
-            status: 'Active Program',
-            description: '🟢 Running IT education and technology integration programs in tech hubs'
+            location: "Bangalore",
+            teachers: 2,
+            schools: 1,
         },
         'Kerala': {
-            location: "Thiruvananthapuram, Kochi, Kozhikode, Thrissur",
-            teachers: 156,
+            location: "Kozhikode",
+            trainer: 2,
+            youth:50,
             schools: 43,
-            status: 'Active Program',
-            description: '🟢 Active educational excellence and literacy enhancement programs'
         },
         'Jammu and Kashmir': {
-            location: "Srinagar, Jammu, Anantnag, Baramulla",
-            teachers: 134,
-            schools: 41,
-            status: 'Active Program',
-            description: '🟢 Currently supporting education in conflict-affected areas with peace initiatives'
+            location: "Ladak",
+            schools: 1,
+            
         }
     };
 
     // Future Plans Data (all other states)
     const futurePlans = {
-        'Bihar': { location: "Patna, Gaya, Bhagalpur, Muzaffarpur", description: '🟡 Large-scale rural teacher training expansion coming in 2025' },
-        'Delhi': { location: "New Delhi, Central Delhi, East Delhi, West Delhi", description: '🟡 Metropolitan education excellence expansion planned for 2025' },
-        'Goa': { location: "Panaji, Vasco da Gama, Margao, Mapusa", description: '🟡 Coastal education and tourism-focused programs coming soon' },
-        'Himachal Pradesh': { location: "Shimla, Manali, Dharamshala, Kullu", description: '🟡 Hill station education and environmental programs planned' },
-        'Jharkhand': { location: "Ranchi, Jamshedpur, Dhanbad, Bokaro", description: '🟡 Mining community education and skill development coming in 2025' },
-        'Rajasthan': { location: "Jaipur, Udaipur, Jodhpur, Kota", description: '🟡 Desert region education and water conservation programs planned' },
-        'Tamil Nadu': { location: "Chennai, Coimbatore, Madurai, Tiruchirappalli", description: '🟡 Temple heritage and technology education expansion planned' },
-        'Telangana': { location: "Hyderabad, Warangal, Nizamabad, Karimnagar", description: '🟡 Tech hub innovation and startup education programs in development' },
-        'Uttar Pradesh': { location: "Lucknow, Kanpur, Allahabad, Agra", description: '🟡 Massive state-wide education modernization planned for 2025-26' },
-        'Uttarakhand': { location: "Dehradun, Haridwar, Rishikesh, Nainital", description: '🟡 Himalayan foothills and adventure education programs coming' },
-
+        
     };
 
     // Create tooltip element
@@ -1246,15 +1232,14 @@
                 } else if (futureData) {
                     tooltip.innerHTML = `
                         <div style="font-weight: bold; margin-bottom: 5px; color: #FFC107;">${stateName}</div>
-                        <div style="font-weight: bold; color: #FF9800; margin-bottom: 5px;">Future Plan</div>
+                        // <div style="font-weight: bold; color: #FF9800; margin-bottom: 5px;">Future Plan</div>
                         <div>📍 Locations: ${futureData.location}</div>
                         <div style="margin-top: 8px; font-style: italic;">${futureData.description}</div>
                     `;
                 } else {
                     tooltip.innerHTML = `
                         <div style="font-weight: bold; margin-bottom: 5px;">${stateName || 'Unknown Region'}</div>
-                        <div>📍 Program planning in progress...</div>
-                    `;
+                                            `;
                 }
                 tooltip.style.opacity = '1';
             });
@@ -1363,7 +1348,7 @@
       function toggleMenu() {
         const navMenu = document.getElementById("nav-menu");
         navMenu.classList.toggle("active");
-      } 
+      }
     </script>
   </body>
 </html>

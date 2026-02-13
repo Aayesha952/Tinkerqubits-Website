@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
-   <style>
+    <style>
       * {
         margin: 0;
         padding: 0;
@@ -64,6 +64,7 @@
         list-style: none;
         margin: 0;
         padding: 0;
+        align-items: center;
       }
 
       .nav-item {
@@ -79,6 +80,7 @@
         font-weight: 500;
         transition: background-color 0.3s ease;
         white-space: nowrap;
+        align-self: center;
       }
 
       .nav-link:hover {
@@ -283,23 +285,6 @@
       .card-stat-label {
         font-size: 0.75rem;
         color: #777;
-      }
-
-      .card-arrow {
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0.9;
-        transform: translateX(0);
-        transition: 0.35s ease;
       }
 
       .program-card:hover .card-arrow {
@@ -511,7 +496,6 @@
           font-size: 14px;
         }
       }
-    </style>
     </style>
   </head>
   <body>
@@ -758,8 +742,7 @@
       <!-- PROGRAMS SECTION -->
       <section class="programs-section">
         <h2 class="section-title">What We Do</h2>
-        <p class="section-description">
-        </p>
+        <p class="section-description"></p>
 
         <div class="cards-grid">
           <!-- CARD 1 -->
@@ -771,18 +754,22 @@
             <div class="card-content">
               <h3 class="card-title">Tech for Teachers</h3>
               <p class="card-description">
-               Tech for Teacher is a dedicated teacher upskilling and capacity-building program designed to strengthen elementary computer science education by building teacher agency, confidence, and leadership.
-               By empowering teachers as digital educators and leaders, Tech for Teacher ensures sustainable, high-quality computer science education—preparing students not just for today’s classrooms, but for future-ready STEM careers.
- 
+                Tech for Teacher is a dedicated teacher upskilling and
+                capacity-building program designed to strengthen elementary
+                computer science education by building teacher agency,
+                confidence, and leadership. By empowering teachers as digital
+                educators and leaders, Tech for Teacher ensures sustainable,
+                high-quality computer science education—preparing students not
+                just for today’s classrooms, but for future-ready STEM careers.
               </p>
 
               <div class="card-stats">
                 <div>
-                  <div class="card-stat-number">500+</div>
+                  <div class="card-stat-number">250+</div>
                   <div class="card-stat-label">Teachers Trained</div>
                 </div>
                 <div>
-                  <div class="card-stat-number">15+</div>
+                  <div class="card-stat-number">10+</div>
                   <div class="card-stat-label">Workshops</div>
                 </div>
                 <div>
@@ -804,14 +791,20 @@
             <div class="card-content">
               <h3 class="card-title">Tech for School</h3>
               <p class="card-description">
-                Tech for Schools is an in-school ( part of regular school computer period)program designed to strengthen elementary and secondary computer science education (Grades 1–10) by transforming how technology is taught and experienced by students.
-                By integrating curriculum, teacher capacity, and infrastructure, Tech for Schools ensures children gain early, continuous, and equitable exposure to computer science—fostering curiosity, critical thinking, and a deeper understanding of growing in technology-driven world.
-
+                Tech for Schools is an in-school ( part of regular school
+                computer period)program designed to strengthen elementary and
+                secondary computer science education (Grades 1–10) by
+                transforming how technology is taught and experienced by
+                students. By integrating curriculum, teacher capacity, and
+                infrastructure, Tech for Schools ensures children gain early,
+                continuous, and equitable exposure to computer science—fostering
+                curiosity, critical thinking, and a deeper understanding of
+                growing in technology-driven world.
               </p>
 
               <div class="card-stats">
                 <div>
-                  <div class="card-stat-number">50+</div>
+                  <div class="card-stat-number">16+</div>
                   <div class="card-stat-label">Partner Schools</div>
                 </div>
                 <div>
@@ -840,8 +833,13 @@
             <div class="card-content">
               <h3 class="card-title">TMM (Thinker Maker's Mela)</h3>
               <p class="card-description">
-       Thinkers Makers Mela (TMM) is TinkerQubits Foundation’s annual flagship showcase and community-building event, bringing together students, educators, and technology enthusiasts to celebrate learning through creation.
-       By emphasizing making, sharing, and reflection, Thinkers Makers Mela reinforces the journey from access to agency—showcasing how equitable digital education can spark innovation, ownership, and social change."
+                Thinkers Makers Mela (TMM) is TinkerQubits Foundation’s annual
+                flagship showcase and community-building event, bringing
+                together students, educators, and technology enthusiasts to
+                celebrate learning through creation. By emphasizing making,
+                sharing, and reflection, Thinkers Makers Mela reinforces the
+                journey from access to agency—showcasing how equitable digital
+                education can spark innovation, ownership, and social change."
               </p>
 
               <div class="card-stats">
@@ -850,12 +848,12 @@
                   <div class="card-stat-label">Editions</div>
                 </div>
                 <div>
-                  <div class="card-stat-number">1000+</div>
+                  <div class="card-stat-number">200+</div>
                   <div class="card-stat-label">Participants</div>
                 </div>
                 <div>
-                  <div class="card-stat-number">20+</div>
-                  <div class="card-stat-label">Events</div>
+                  <div class="card-stat-number">50+</div>
+                  <div class="card-stat-label">Projects</div>
                 </div>
               </div>
 
@@ -872,18 +870,24 @@
             <div class="card-content">
               <h3 class="card-title">Tech Tribe</h3>
               <p class="card-description">
-                Tech tribe Tech Tribes is a student leadership and peer-learning program designed to build sustainable, student-led technology communities. Structured as democratic, after-school clubs for students in Grades 6–9, the program nurtures agency, collaboration, and responsible technology use.
-                By placing students at the center of learning and leadership, Tech Tribes cultivates conscious tech communities—empowering young people to use technology consciously, ethically and creatively for real-world.
-
+                Tech tribe Tech Tribes is a student leadership and peer-learning
+                program designed to build sustainable, student-led technology
+                communities. Structured as democratic, after-school clubs for
+                students in Grades 6–9, the program nurtures agency,
+                collaboration, and responsible technology use. By placing
+                students at the center of learning and leadership, Tech Tribes
+                cultivates conscious tech communities—empowering young people to
+                use technology consciously, ethically and creatively for
+                real-world.
               </p>
 
               <div class="card-stats">
                 <div>
-                  <div class="card-stat-number">300+</div>
+                  <div class="card-stat-number">100+</div>
                   <div class="card-stat-label">Members</div>
                 </div>
                 <div>
-                  <div class="card-stat-number">25+</div>
+                  <div class="card-stat-number">10+</div>
                   <div class="card-stat-label">Projects</div>
                 </div>
                 <div>

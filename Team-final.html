@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -171,6 +171,14 @@
       }
 
       .cards-grid.founders-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5rem;
+      }
+
+      .cards-grid.core-grid {
         grid-template-columns: repeat(2, 1fr);
         max-width: 800px;
         margin-left: auto;
@@ -399,6 +407,10 @@
         .cards-grid.founders-grid {
           grid-template-columns: repeat(2, 1fr);
         }
+
+        .cards-grid.core-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
 
       @media (max-width: 768px) {
@@ -443,7 +455,8 @@
 
         /* Cards mobile */
         .cards-grid,
-        .cards-grid.founders-grid {
+        .cards-grid.founders-grid,
+        .cards-grid.core-grid {
           grid-template-columns: 1fr;
         }
 
@@ -724,50 +737,33 @@
           <!-- FOUNDER 1 -->
           <a href="#" class="team-card founder-card">
             <div class="card-image">
-              <span>AJ</span>
+              <span>RP</span>
             </div>
             <div class="card-content">
-              <h3 class="card-title">Alex Johnson</h3>
-              <p class="card-subtitle">Co-Founder & CEO</p>
+              <h3 class="card-title">Rinsa Perapadan</h3>
+              <p class="card-subtitle">Co-Founder,CEO</p>
               <p class="card-description">
-                Visionary leader with 12+ years in tech startups. Alex drives
-                our mission to create innovative solutions that make a real
-                difference in people's lives.
+                Passionate educator and visionary leader dedicated to making
+                quality education accessible to all. Rinsa drives TinkerQubits'
+                mission to empower young minds through innovative STEM learning
+                programs.
               </p>
-
-              <div class="card-stats">
-                <div>
-                  <div class="card-stat-number">12+</div>
-                  <div class="card-stat-label">Years Exp</div>
-                </div>
-              </div>
-
-              <div class="card-arrow">→</div>
             </div>
           </a>
 
           <!-- FOUNDER 2 -->
           <a href="#" class="team-card founder-card">
             <div class="card-image">
-              <span>SP</span>
+              <span>SB</span>
             </div>
             <div class="card-content">
-              <h3 class="card-title">Sarah Parker</h3>
-              <p class="card-subtitle">Co-Founder & CTO</p>
+              <h3 class="card-title">Swapnil Bawa</h3>
+              <p class="card-subtitle">Co-Founder,CTO</p>
               <p class="card-description">
-                Full-stack architect and tech enthusiast. Sarah leads our
-                engineering team in building scalable, cutting-edge applications
-                with modern technologies.
+                Technology enthusiast and expert in educational technology
+                solutions. Swapnil leads the technical strategy and development
+                of cutting-edge learning platforms at TinkerQubits Foundation.
               </p>
-
-              <div class="card-stats">
-                <div>
-                  <div class="card-stat-number">10+</div>
-                  <div class="card-stat-label">Years Exp</div>
-                </div>
-              </div>
-
-              <div class="card-arrow">→</div>
             </div>
           </a>
         </div>
@@ -780,104 +776,38 @@
           Passionate individuals who bring our vision to life every day
         </p>
 
-        <div class="cards-grid">
+        <div class="cards-grid core-grid">
           <!-- TEAM MEMBER 1 -->
           <a href="#" class="team-card">
             <div class="card-image">
-              <span>MR</span>
+              <span>PT</span>
             </div>
             <div class="card-content">
-              <h3 class="card-title">Michael Rodriguez</h3>
-              <p class="card-subtitle">Head of Design</p>
+              <h3 class="card-title">Pallavi Thakur</h3>
+              <p class="card-subtitle">Curriculum & Training Lead</p>
               <p class="card-description">
-                Creative strategist who crafts beautiful, user-centered
-                experiences. Michael ensures every design decision enhances user
-                satisfaction and engagement.
+                Experienced curriculum designer who creates engaging and
+                effective educational content. Pallavi develops innovative
+                learning modules that inspire students and enhance their
+                understanding of STEM concepts.
               </p>
-
-              <div class="card-stats">
-                <div>
-                  <div class="card-stat-number">8+</div>
-                  <div class="card-stat-label">Years Exp</div>
-                </div>
-              </div>
-
-              <div class="card-arrow">→</div>
             </div>
           </a>
 
           <!-- TEAM MEMBER 2 -->
           <a href="#" class="team-card">
             <div class="card-image">
-              <span>JL</span>
+              <span>AS</span>
             </div>
             <div class="card-content">
-              <h3 class="card-title">Jessica Lee</h3>
-              <p class="card-subtitle">Product Manager</p>
+              <h3 class="card-title">Ayesha Shaikh</h3>
+              <p class="card-subtitle">Operations and Training Lead</p>
               <p class="card-description">
-                User advocate who bridges vision and execution. Jessica ensures
-                our products solve real problems and deliver exceptional value
-                to our customers.
+                Experienced operations professional who ensures seamless
+                coordination across all programs. Ayesha manages day-to-day
+                operations and maintains efficient processes to support our
+                mission and educational initiatives.
               </p>
-
-              <div class="card-stats">
-                <div>
-                  <div class="card-stat-number">7+</div>
-                  <div class="card-stat-label">Years Exp</div>
-                </div>
-              </div>
-
-              <div class="card-arrow">→</div>
-            </div>
-          </a>
-
-          <!-- TEAM MEMBER 3 -->
-          <a href="#" class="team-card">
-            <div class="card-image">
-              <span>DK</span>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">David Kim</h3>
-              <p class="card-subtitle">Senior Developer</p>
-              <p class="card-description">
-                Code craftsman with expertise in modern frameworks. David builds
-                robust applications that perform flawlessly and scale
-                effortlessly.
-              </p>
-
-              <div class="card-stats">
-                <div>
-                  <div class="card-stat-number">9+</div>
-                  <div class="card-stat-label">Years Exp</div>
-                </div>
-              </div>
-
-              <div class="card-arrow">→</div>
-            </div>
-          </a>
-
-          <!-- TEAM MEMBER 4 (NEW) -->
-          <a href="#" class="team-card">
-            <div class="card-image">
-              <span>RJ</span>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Robert Jackson</h3>
-              <p class="card-subtitle">Operations Manager</p>
-              <p class="card-description">
-                Operations expert who keeps everything running smoothly. Robert
-                ensures efficient processes and seamless coordination across all
-                departments.
-              </p>
-
-              <div class="card-stats">
-                <div>
-                  <div class="card-stat-number">8+</div>
-                  <div class="card-stat-label">Years Exp</div>
-                </div>
-              </div>
-
-              <div class="card-arrow">→</div>
             </div>
           </a>
         </div>

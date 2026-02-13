@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
       * {
         margin: 0;
@@ -2087,7 +2088,7 @@
         <div class="visual-content">
           <div class="tech-grid">
             <div class="tech-card">
-              <div class="tech-icon">👶</div>
+              <div class="tech-icon">👩🏻‍🎓🧑🏻‍🎓</div>
               <h3>Child Centric Tech Work</h3>
             </div>
             <div class="tech-card">
@@ -2099,7 +2100,7 @@
               <h3>Tech Tribe</h3>
             </div>
             <div class="tech-card">
-              <div class="tech-icon">🛠️</div>
+              <div class="tech-icon">💡</div>
               <h3>TMM (Tinker Makers Melas)</h3>
             </div>
           </div>
@@ -2147,6 +2148,9 @@
           <p>
             If children from underserved communities have access to age-appropriate digital curriculum, trained and motivated educators, and affordable digital infrastructure, then they will develop strong digital foundations, critical thinking, and ethical awareness, leading to conscious tech communities where technology is used safely, creatively, and for social good—unlocking lifelong learning, workforce readiness, and social mobility.
           </p>
+          <button class="arrow-button" onclick="openSolutionPopup()">
+            <span class="arrow-icon">→</span>
+          </button>
         </div>
 
         <div class="right image-box">
@@ -2155,8 +2159,8 @@
             alt="Solution"
           />
         </div>
-       
-      
+
+
       </div>
        <div class="see-solution">
         <a href="pg.html">
@@ -2606,16 +2610,13 @@
       </div>
     </section>
     <footer>
-      <!-- Top Right Links -->
       <div class="footer-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
         <a href="#">Contact Us</a>
       </div>
 
-      <!-- Main Footer Content -->
       <div class="footer-container">
-        <!-- Left Column: Logo + Social Icons -->
         <div class="footer-left">
           <img src="images/logo-v3-cut-275x116.png" alt="TinkerQubits Logo" />
           <div class="footer-social-icons">
@@ -2626,7 +2627,6 @@
           </div>
         </div>
 
-        <!-- Right Column: Contact Info -->
         <div class="footer-center">
           <h3><strong>TinkerQubits Foundation</strong></h3>
           <p>
@@ -2641,7 +2641,6 @@
         </div>
       </div>
 
-      <!-- Bottom -->
       <div class="footer-bottom">
         © 2024 TinkerQubits Foundation. All Rights Reserved.
       </div>
@@ -2662,6 +2661,28 @@
 
         <h2>Skills and Thinking Divide</h2>
         <p>The most dangerous gap is not access—but outcomes. Children with early, guided exposure develop problem-solving, computational thinking, and digital confidence, while others are left with only basic operational skills. This widening skills divide reinforces existing inequalities and threatens to lock millions of children out of future education and employment opportunities in a digital economy.</p>
+      </div>
+    </div>
+
+    <!-- Popup for Solution Details -->
+    <div id="solutionPopup" class="popup-overlay">
+      <div class="popup-content">
+        <span class="popup-close" onclick="closeSolutionPopup()" title="Close">&times;</span>
+        <h2>Curriculum</h2>
+        <p>We deliver a holistic, age-appropriate digital curriculum that helps children understand and critically engage with the digital and electronic technologies shaping their lives today. The curriculum goes beyond tool usage—building foundational concepts, digital safety, ethical awareness, and problem-solving skills essential for thriving in a digital world.</p>
+
+        <h2>Training</h2>
+        <p>We strengthen the education ecosystem by training and upskilling BSc IT, BCA graduates, and computer educators, equipping them with strong pedagogical and technical skills. These trained educators are placed in low-income schools and community settings, ensuring children have access to qualified, confident, and future-ready computer teachers.</p>
+        <h2> Infrastructure</h2>
+        <p>
+          We design and deploy affordable, scalable, and Free and Open Source Software (FOSS)–based digital infrastructure for low-income schools and nonprofits. By combining devices, open learning tools, and locally contextualized learning materials, we enable high-quality computer education at the last mile—helping institutions move beyond one-time access toward meaningful, sustained digital learning ecosystems.
+        </p>
+        <p>
+          By using FOSS, schools reduce costs, gain autonomy over their systems, and build sustainable digital infrastructure that can grow with their needs.
+        </p>
+        <p>
+          This integrated approach moves beyond access to build sustainable digital competence, ethical technology use, and workforce readiness—ensuring digital education becomes a driver of equity not exclusion.
+        </p>
       </div>
     </div>
 
@@ -2752,11 +2773,24 @@
       document.body.style.overflow = "auto"; // Restore scrolling
     }
 
+    function openSolutionPopup() {
+      document.getElementById("solutionPopup").style.display = "flex";
+      document.body.style.overflow = "hidden"; // Prevent background scrolling
+    }
+
+    function closeSolutionPopup() {
+      document.getElementById("solutionPopup").style.display = "none";
+      document.body.style.overflow = "auto"; // Restore scrolling
+    }
+
     // Close popup when clicking outside
     window.onclick = function (event) {
-      const popup = document.getElementById("problemPopup");
-      if (event.target === popup) {
+      const problemPopup = document.getElementById("problemPopup");
+      const solutionPopup = document.getElementById("solutionPopup");
+      if (event.target === problemPopup) {
         closeProblemPopup();
+      } else if (event.target === solutionPopup) {
+        closeSolutionPopup();
       }
     };
   </script>
